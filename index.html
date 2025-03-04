@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -20,20 +21,28 @@
         body {
             background-color: #f0f2f5;
             color: #333;
+            position: relative;
         }
 
         header {
             background-color: #2c3e50;
-            padding: 20px;
+            padding: 20px 40px;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
             gap: 20px;
+            background: linear-gradient(90deg, #2c3e50 0%, #34495e 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         header img {
             max-width: 200px;
+            transition: transform 0.3s ease;
+        }
+
+        header img:hover {
+            transform: scale(1.12);
         }
 
         .header-info {
@@ -47,26 +56,63 @@
             margin-bottom: 10px;
             font-weight: bold;
             text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
         }
 
         .header-info p {
             font-size: 1em;
             color: #ecf0f1;
             line-height: 1.4;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: clamp(0.9em, 2vw, 1em);
         }
 
         .header-info p:last-child {
-            font-weight: bold;
-            color: #3498db;
+            font-size: clamp(1em, 2.5vw, 1.2em);
+            text-shadow: 0 0 5px rgba(255, 165, 0, 0.7);
         }
 
         nav {
             background-color: #3498db;
-            padding: 10px;
+            padding: 20px;
             text-align: center;
+            position: relative;
+        }
+
+        .nav-links {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: #2c3e50;
+            padding: 20px;
+            z-index: 1000;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .nav-links.active {
+            transform: translateX(0);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
         }
 
         nav a {
@@ -74,6 +120,17 @@
             text-decoration: none;
             margin: 0 15px;
             font-weight: normal;
+            text-transform: uppercase;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #e67e22;
+        }
+
+        .nav-item {
+            position: relative;
         }
 
         .nav-item:hover .nav-dropdown {
@@ -83,10 +140,11 @@
         .nav-dropdown {
             display: none;
             position: absolute;
-            background-color: #3498db;
+            background-color: #2980b9;
             min-width: 160px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
+            z-index: 10;
+            border-radius: 5px;
         }
 
         .nav-dropdown a {
@@ -94,23 +152,182 @@
             padding: 12px 16px;
             text-decoration: none;
             display: block;
+            margin: 0;
         }
 
         .nav-dropdown a:hover {
-            background-color: #2980b9;
+            background-color: #1a5276;
         }
 
+        .hamburger {
+            display: none;
+            font-size: 1.5em;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hamburger span {
+            font-size: 17px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .nav-item .services-arrow::after {
+            content: '▼';
+            margin-left: 5px;
+            font-size: 0.8em;
+            vertical-align: baseline;
+        }
+
+        /* Banner Styles with Slideshow */
         .banner {
-            background-image: url('https://via.placeholder.com/1200x400?text=Xây+Dựng+Hà+Anh+Nam');
-            background-size: cover;
-            background-position: center;
-            height: 400px;
+            position: relative;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            /* Đảm bảo không bị tràn hình ảnh */
+        }
+
+        .banner-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .banner-slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: slideshow 15s infinite;
+        }
+
+        .banner-slideshow img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .banner-slideshow img:nth-child(2) {
+            animation-delay: 5s;
+        }
+
+        .banner-slideshow img:nth-child(3) {
+            animation-delay: 10s;
+        }
+
+        @keyframes slideshow {
+            0% {
+                opacity: 0;
+            }
+
+            6.67% {
+                opacity: 1;
+            }
+
+            /* 1/15 giây */
+            33.33% {
+                opacity: 1;
+            }
+
+            /* Hiển thị trong 5 giây */
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+            z-index: 1;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.5em, 5vw, 3.5em);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .banner .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1em, 3vw, 1.5em);
+            margin: 15px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            animation: fadeInUp 1s ease-in-out 0.5s;
+            animation-fill-mode: both;
+        }
+
+        .banner .cta-button {
+            display: inline-block;
+            padding: clamp(10px, 2vw, 15px) clamp(20px, 3vw, 30px);
+            background-color: #e67e22;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: clamp(1em, 2.5vw, 1.2em);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: fadeInUp 1s ease-in-out 1s;
+            animation-fill-mode: both;
+        }
+
+        .banner .cta-button:hover {
+            background-color: #d35400;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .about-us {
@@ -137,44 +354,82 @@
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 40px;
             width: 100%;
             max-width: 1200px;
         }
 
         .about-content img {
             max-width: 100%;
-            height: 655px;
+            height: 100%;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            object-fit: cover;
         }
 
         .about-content img:hover {
             transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
         }
 
         .about-text {
-            padding: 20px;
+            padding: 30px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .about-text h3 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin-bottom: 10px;
         }
 
         .about-text p,
         .about-text ul {
-            line-height: 1.6;
+            line-height: 1.8;
             color: #34495e;
+            font-size: 1em;
         }
 
         .about-text ul {
             list-style-type: none;
+            padding-left: 0;
+        }
+
+        .about-text ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
         }
 
         .about-text ul li:before {
             content: '✓';
             color: #e67e22;
-            margin-right: 10px;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        .about-text .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #e67e22;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .about-text .cta-button:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
         }
 
         footer {
@@ -296,52 +551,12 @@
             opacity: 1;
         }
 
-        /* Existing Responsive Design for Footer */
-        @media (max-width: 768px) {
-            footer {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-                padding: 20px;
-            }
-
-            .footer-column {
-                margin-bottom: 20px;
-            }
-
-            .footer-form input,
-            .footer-form button {
-                padding: 10px;
-            }
-
-            .footer-certificates img {
-                max-width: 100px;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .footer-column:nth-child(5) {
-                grid-row: 2;
-                grid-column: 1;
-            }
-
-            .footer-column:nth-child(6) {
-                grid-row: 2;
-                grid-column: 2;
-            }
-
-            .footer-column:nth-child(7) {
-                grid-row: 2;
-                grid-column: 3 / span 2;
-            }
-        }
-
-        /* New Responsive Design */
-        /* Tablet (max-width: 1024px) */
+        /* Responsive Design */
         @media (max-width: 1024px) {
             header {
                 flex-direction: column;
                 gap: 10px;
-                padding: 15px;
+                padding: 15px 20px;
             }
 
             header img {
@@ -350,6 +565,7 @@
 
             .header-info {
                 max-width: 100%;
+                text-align: center;
             }
 
             .header-info h2 {
@@ -360,31 +576,8 @@
                 font-size: 0.9em;
             }
 
-            nav {
-                flex-direction: column;
-                padding: 15px;
-            }
-
-            nav a {
-                margin: 10px 0;
-            }
-
-            .nav-item {
-                position: relative;
-            }
-
-            .nav-dropdown {
-                position: static;
-                box-shadow: none;
-                background-color: #2980b9;
-            }
-
             .banner {
-                height: 300px;
-            }
-
-            .banner h1 {
-                font-size: 2em;
+                height: 70vh;
             }
 
             .about-us {
@@ -407,43 +600,113 @@
             }
         }
 
-        /* Mobile (max-width: 480px) */
-        @media (max-width: 480px) {
-            header {
+        @media (max-width: 768px) {
+            footer {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                padding: 20px;
+            }
+
+            .footer-column {
+                margin-bottom: 20px;
+            }
+
+            .footer-form input,
+            .footer-form button {
                 padding: 10px;
             }
 
-            header img {
+            .footer-certificates img {
                 max-width: 100px;
             }
 
-            .header-info h2 {
-                font-size: 1em;
+            .banner {
+                height: 60vh;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .footer-column:nth-child(5) {
+                grid-row: 2;
+                grid-column: 1;
             }
 
-            .header-info p {
-                font-size: 0.8em;
+            .footer-column:nth-child(6) {
+                grid-row: 2;
+                grid-column: 2;
+            }
+
+            .footer-column:nth-child(7) {
+                grid-row: 2;
+                grid-column: 3 / span 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 15px;
+            }
+
+            header img {
+                max-width: 150px;
+            }
+
+            .header-info p:last-child::before {
+                content: '📞 ';
+                font-size: 1.2em;
+                vertical-align: middle;
             }
 
             .header-info p:last-child {
-                font-size: 1em;
+                display: inline-block;
+                padding: 5px 15px;
+                background-color: rgba(255, 165, 0, 0.2);
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
             }
 
-            nav {
-                padding: 10px;
+            .header-info p:last-child:hover {
+                background-color: rgba(255, 165, 0, 0.4);
             }
 
-            nav a {
-                margin: 8px 0;
-                font-size: 0.9em;
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                transform: translateX(-100%);
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .nav-links a {
+                margin: 15px 0;
+                font-size: 1.1em;
+            }
+
+            .nav-dropdown {
+                position: static;
+                box-shadow: none;
+                background-color: #34495e;
+                width: 100%;
+            }
+
+            .close-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 1.5em;
+                color: white;
+                background: none;
+                border: none;
+                cursor: pointer;
             }
 
             .banner {
-                height: 200px;
-            }
-
-            .banner h1 {
-                font-size: 1.5em;
+                height: 50vh;
             }
 
             .about-us {
@@ -499,6 +762,45 @@
                 max-width: 80px;
             }
         }
+
+        @media (min-width: 481px) {
+
+            .hamburger,
+            .close-btn {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex !important;
+                flex-direction: row;
+                position: static;
+                width: auto;
+                height: auto;
+                background: none;
+                padding: 0;
+                transform: none;
+                transition: none;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .nav-links a {
+                margin: 0 15px;
+            }
+
+            .nav-item {
+                display: inline-block;
+            }
+
+            .nav-dropdown {
+                top: 100%;
+                left: 0;
+            }
+
+            .overlay {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -508,73 +810,88 @@
         <div class="header-info">
             <h2 style="color: gold; font-size: 1.5em; font-family: serif;">CÔNG TY TNHH TƯ VẤN, XÂY DỰNG - HÀ ANH NAM
             </h2>
-            <p style="color: white; font-size: 1em; font-family: sans-serif;">
-                THƯƠNG HIỆU XÂY MỚI, SỬA CHỮA NHÀ UY TÍN - XÂY DỰNG TỪ TÂM - NÂNG TẦM ĐẲNG CẤP.
-            </p>
+            <p style="color: white; font-size: 1em; font-family: sans-serif;">THƯƠNG HIỆU XÂY MỚI, SỬA CHỮA NHÀ UY TÍN -
+                XÂY DỰNG TỪ TÂM - NÂNG TẦM ĐẲNG CẤP.</p>
             <p style="color: white; font-size: 1em; font-family: sans-serif;">Địa chỉ: Tân Thịnh, Yên Trị, Yên Thủy, Hòa
                 Bình</p>
-            <p style="color: white; font-size: 0.8em; font-family: sans-serif;">
-                (Tư vấn, thiết kế, thi công xây mới, sửa chữa cải tạo nhà ở, văn phòng... trọn gói)
-            </p>
+            <p style="color: white; font-size: 0.8em; font-family: sans-serif;">(Tư vấn, thiết kế, thi công xây mới, sửa
+                chữa cải tạo nhà ở, văn phòng... trọn gói)</p>
             <p style="color: orange; font-size: 1.2em; font-weight: bold; font-family: sans-serif;">Hotline: 0989 912
                 379</p>
         </div>
     </header>
 
-    <nav style="text-transform: uppercase; color: white;">
-        <a href="#home">Trang Chủ</a> | <a href="#about">Giới Thiệu</a> |
-        <div class="nav-item">
-            <a href="#services">Dịch Vụ</a>
-            <div class="nav-dropdown">
-                <a href="#build">Xây Nhà Chọn Gói</a>
-                <a href="#repair-home">Sửa Nhà Chọn Gói</a>
-                <a href="#repair-office">Sửa Chữa Văn Phòng</a>
-            </div>
+    <nav>
+        <button class="hamburger"><i class="fas fa-bars"></i><span>Danh mục dịch vụ</span></button>
+        <div class="nav-links">
+            <button class="close-btn"><i class="fas fa-times"></i></button>
+            <a href="#home">Trang Chủ</a> |
+            <a href="#about">Giới Thiệu</a> |
+            <div class="nav-item">
+                <a href="#services" class="services-arrow">Dịch Vụ</a>
+                <div class="nav-dropdown">
+                    <a href="#build">Xây Nhà Chọn Gói</a>
+                    <a href="#repair-home">Sửa Nhà Chọn Gói</a>
+                    <a href="#repair-office">Sửa Chữa Văn Phòng</a>
+                </div>
+            </div> |
+            <a href="#projects">Dự Án</a> |
+            <a href="#consult">Tư Vấn Thi Công</a> |
+            <a href="#news">Tin Tức</a> |
+            <a href="#recruit">Tuyển Dụng</a> |
+            <a href="#contact">Liên Hệ</a>
         </div>
-        | <a href="#projects">Dự Án</a> | <a href="#consult">Tư Vấn Thi Công</a> |
-        <a href="#news">Tin Tức</a> | <a href="#recruit">Tuyển Dụng</a> |
-        <a href="#contact">Liên Hệ</a>
     </nav>
 
-    <section class="banner"
-        style="position: relative; background-image: url('https://xaydungminhthinh.com/wp-content/uploads/2020/02/mau-nha-biet-thu-hien-dai-3-tang-tai-dong-nai-bt2318-2-jpg.webp'); background-size: cover; background-position: center; text-align: center; height: 100vh; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Times New Roman', Times, serif; font-size: 2.5em; font-weight: bold;">
-        <div
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(65, 55, 55, 0.5);">
+    <div class="overlay"></div>
+
+    <section class="banner">
+        <div class="banner-slideshow">
+            <img src="https://xaydungminhthinh.com/wp-content/uploads/2020/02/mau-nha-biet-thu-hien-dai-3-tang-tai-dong-nai-bt2318-2-jpg.webp"
+                alt="Slide 1">
+            <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/07/hinh-anh-ngoi-nha-6.jpg"
+                alt="Slide 2">
+            <img src="https://nhadepshouse.com/picture/file/thiet-ke-biet-thu-hien-dai-anh-hung.jpg" alt="Slide 3">
         </div>
-        <h1 style="position: relative; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); z-index: 1;">XÂY DỰNG TỪ TÂM - NÂNG
-            TẦM ĐẲNG CẤP</h1>
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <h1>XÂY DỰNG TỪ TÂM - NÂNG TẦM ĐẲNG CẤP</h1>
+            <p class="subtitle">Giải pháp xây dựng toàn diện cho ngôi nhà của bạn</p>
+            <a href="#contact" class="cta-button">Liên hệ ngay</a>
+        </div>
     </section>
 
-    <section class="about-us">
+    <section class="about-us" id="about">
         <h2>Về chúng tôi</h2>
         <div class="about-content">
             <img src="https://vn.toto.com/wp-content/uploads/2024/07/thiet-ke-nha-10.webp" alt="Hà Anh Nam Team" />
             <div class="about-text">
-                <p>CÔNG TY TNHH TƯ VẤN, XÂY DỰNG – HÀ ANH NAM</p>
-                <p>XÂY DỰNG TỪ TÂM - NÂNG TẦM ĐẲNG CẤP</p>
+                <h3>CÔNG TY TNHH TƯ VẤN, XÂY DỰNG – HÀ ANH NAM</h3>
+                <p><strong>XÂY DỰNG TỪ TÂM - NÂNG TẦM ĐẲNG CẤP</strong></p>
+                <p>Với hơn 10 năm kinh nghiệm và hàng nghìn dự án tại Hà Nội, chúng tôi tự hào mang đến dịch vụ xây dựng
+                    và sửa chữa nhà ở, văn phòng uy tín, chuyên nghiệp.</p>
+
+                <h3>Cam kết của chúng tôi</h3>
                 <ul>
-                    <li>CHỮ TÍN CHỮ TÂM ĐẶT LÊN HÀNG ĐẦU</li>
-                    <li>10 NĂM KINH NHIỆM, TRIỂN KHAI HƠN 1000 CÔNG TRÌNH TẠI HÀ NỘI</li>
-                    <li>QUY TRÌNH TƯ VẤN - THIẾT KẾ - THI CÔNG CHUẨN CHẤT LƯỢNG</li>
-                    <li>ĐỘI NGŨ KHẢO SÁT, THIẾT KẾ, THI CÔNG CHUYÊN NGHIỆP</li>
-                    <li>KĨ SƯ LÊN PHƯƠNG ÁN THI CÔNG VÀ DỰ TOÁN NHANH CHÓNG</li>
-                    <li>CAM KẾT TIẾN ĐỘ THI CÔNG, BẢO HÀNH SIÊU TỐC</li>
+                    <li>Chữ tín, chữ tâm đặt lên hàng đầu</li>
+                    <li>Quy trình tư vấn - thiết kế - thi công chuẩn chất lượng</li>
+                    <li>Đội ngũ kỹ sư, thi công chuyên nghiệp, tận tâm</li>
+                    <li>Cam kết tiến độ thi công, bảo hành siêu tốc</li>
+                    <li>Phạt 50 triệu nếu phát hiện hàng giả, hàng nhái</li>
+                    <li>Hoàn tiền nếu công trình kém chất lượng</li>
                 </ul>
-                <p>ĐẾN VỚI HÀ ANH NAM, BẠN SẼ NHẬN ĐƯỢC:</p>
+
+                <h3>Lợi ích khi chọn Hà Anh Nam</h3>
                 <ul>
-                    <li>SỰ HỢP TÁC BỀN VỮNG</li>
-                    <li>HỖ TRỢ XIN CẤP PHÉP XÂY DỰNG</li>
-                    <li>TIẾT KIỆM 20% CHI PHÍ KHI ĐẾN VỚI HÀ ANH NAM</li>
-                    <li>GIÁM SÁT CÔNG TRÌNH 24/24</li>
-                    <li>LUÔN SÁT CÁNH CÙNG CHỦ NHÀ LỰA CHỌN VẬT LIỆU HOÀN THIỆN ƯNG Ý NHẤT</li>
-                    <li>CHỦ NHÀ YÊN TÂM LÀM CÔNG VIỆC CỦA MÌNH</li>
+                    <li>Hỗ trợ xin cấp phép xây dựng</li>
+                    <li>Tiết kiệm 20% chi phí xây dựng</li>
+                    <li>Giám sát công trình 24/24</li>
+                    <li>Hỗ trợ lựa chọn vật liệu hoàn thiện tốt nhất</li>
+                    <li>Chủ nhà yên tâm giao phó, tập trung vào công việc cá nhân</li>
                 </ul>
-                <p>HÀ ANH NAM TƯ VẤN - THIẾT KẾ THI CÔNG XÂY MỚI, SỬA NHÀ TRỌN GÓI CHÌA KHÓA TRAO TAY.</p>
-                <p>HÀ ANH NAM cam kết:</p>
-                <p>--->Phạt 50tr/1 lần nếu phát hiện hàng giả hàng nhái</p>
-                <p>Cam kết hoàn lại tiền nếu công trình kém chất lượng</p>
-                <p>UY TÍN - TẬN TÂM - CHUYÊN NGHIỆP</p>
-                <p>"HÀ ANH NAM - XÂY GIÁ TRỊ THẬT"</p>
+
+                <p><strong>HÀ ANH NAM - XÂY GIÁ TRỊ THẬT</strong></p>
+                <a href="#contact" class="cta-button">Liên hệ ngay</a>
             </div>
         </div>
     </section>
@@ -585,8 +902,7 @@
             <p>CÔNG TY TNHH TƯ VẤN, XÂY DỰNG - HÀ ANH NAM</p>
             <p>Địa chỉ: Tân Thịnh, Yên Trị, Yên Thủy, Hòa Bình</p>
             <p>📞 Hotline: 0989 912 379</p>
-            <p>📧 Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                    data-cfemail="3e57505e57385e57575a5c5855571f675e">[email protected]</a></p>
+            <p>📧 Email: haanhnam@gmail.com </p>
             <p>Thời gian làm việc: 08:00 - 18:00, Thứ 2 - Thứ 7</p>
             <a href="#branches" style="color: #3498db">Xem tất cả chi nhánh</a>
         </div>
@@ -656,10 +972,31 @@
                     style="width: 100px; height: 100px; border-radius: 5px;" />
             </div>
         </div>
+        <p style="text-align: center; padding: 20px 0; color: whitesmoke; font-size: 14px;">© 2025 Hà Anh Nam - Tất cả
+            các bản quyền được chịu trách nhiệm bởi Vũ Hoàng Hà.</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const closeBtn = document.querySelector('.close-btn');
+        const overlay = document.querySelector('.overlay');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
         document.querySelectorAll('.nav-item').forEach((item) => {
             item.addEventListener('mouseover', function () {
                 this.querySelector('.nav-dropdown').style.display = 'block';
@@ -683,42 +1020,6 @@
             alert('Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ sớm nhất.');
         });
     </script>
-    <script>
-        (function () {
-            function c() {
-                var b = a.contentDocument || a.contentWindow.document;
-                if (b) {
-                    var d = b.createElement('script');
-                    d.innerHTML =
-                        "window.__CF$cv$params={r:'91a2c4481db9b060',t:'MTc0MDkzODE0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-                    b.getElementsByTagName('head')[0].appendChild(d);
-                }
-            }
-            if (document.body) {
-                var a = document.createElement('iframe');
-                a.height = 1;
-                a.width = 1;
-                a.style.position = 'absolute';
-                a.style.top = 0;
-                a.style.left = 0;
-                a.style.border = 'none';
-                a.style.visibility = 'hidden';
-                document.body.appendChild(a);
-                if ('loading' !== document.readyState) c();
-                else if (window.addEventListener)
-                    document.addEventListener('DOMContentLoaded', c);
-                else {
-                    var e = document.onreadystatechange || function () { };
-                    document.onreadystatechange = function (b) {
-                        e(b);
-                        'loading' !== document.readyState &&
-                            ((document.onreadystatechange = e), c());
-                    };
-                }
-            }
-        })();
-    </script>
-    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'91a37de2a8951867',t:'MTc0MDk0NTc0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
 
 </html>
