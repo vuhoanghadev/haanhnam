@@ -693,6 +693,78 @@
             margin: 0 auto;
         }
 
+
+        /* Phần phản hồi của khách hàng */
+        .customer-feedback {
+            padding: 40px;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .customer-feedback h2 {
+            color: #e67e22;
+            font-size: 2.5em;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .feedback-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .feedback-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feedback-avatar img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .feedback-text {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .feedback-name {
+            font-weight: bold;
+            color: #e67e22;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .feedback-rating {
+            color: #f1c40f;
+            font-size: 1.2em;
+        }
+
+        .feedback-rating i {
+            margin-right: 3px;
+        }
+
         .footer-column {
             text-align: left;
         }
@@ -875,6 +947,24 @@
                 max-width: 100%;
             }
 
+            .customer-feedback {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .customer-feedback h2 {
+                font-size: 2em;
+            }
+
+            .feedback-container {
+                gap: 20px;
+            }
+
+            .feedback-avatar img {
+                width: 80px;
+                height: 80px;
+            }
+
             footer {
                 grid-template-columns: 1fr;
                 grid-template-rows: auto;
@@ -1048,6 +1138,33 @@
                 font-size: 0.9em;
             }
 
+
+            .customer-feedback h2 {
+                font-size: 1.5em;
+            }
+
+            .feedback-item {
+                padding: 15px;
+                gap: 10px;
+            }
+
+            .feedback-avatar img {
+                width: 75px;
+                height: 75px;
+            }
+
+            .feedback-text {
+                font-size: 0.9em;
+            }
+
+            .feedback-name {
+                font-size: 0.8em;
+            }
+
+            .feedback-rating {
+                font-size: 1em;
+            }
+
             footer {
                 padding: 15px;
             }
@@ -1160,6 +1277,8 @@
             .overlay {
                 display: none !important;
             }
+
+
         }
     </style>
 </head>
@@ -1533,6 +1652,68 @@
         <button class="close-success">Đóng</button>
     </div>
 
+
+    <!-- Phần phản hồi của khách hàng (thêm vào đây) -->
+    <section class="customer-feedback" id="feedback">
+        <h2>Phản Hồi Của Khách Hàng</h2>
+        <div class="feedback-container">
+            <div class="feedback-item">
+                <div class="feedback-avatar">
+                    <img src="https://pepsilan.com/wp-content/uploads/2022/12/full-bo-anh-dan-ong-trung-nien-viet-nam-dep-nhat-vn-34.jpg"
+                        alt="Avatar Khách hàng 1">
+                </div>
+                <div class="feedback-content">
+                    <p class="feedback-text">"Tôi rất hài lòng với dịch vụ xây nhà trọn gói của Hà Anh Nam. Đội ngũ thi
+                        công chuyên nghiệp, chất lượng công trình tốt, vượt ngoài mong đợi."</p>
+                    <p class="feedback-name">Nguyễn Trọng Tấn - Khách hàng</p>
+                    <div class="feedback-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="feedback-item">
+                <div class="feedback-avatar">
+                    <img src="https://vnn-imgs-f.vgcloud.vn/2021/01/17/16/-14.jpg" alt="Avatar Khách hàng 2">
+                </div>
+                <div class="feedback-content">
+                    <p class="feedback-text">"Dịch vụ sửa nhà của Hà Anh Nam thật tuyệt vời. Mọi thứ được thực hiện
+                        nhanh chóng, sạch sẽ và tư vấn lắp đặt thiết bị thông minh với giá cả hợp lý. Tôi sẽ giới thiệu
+                        cho bạn bè."</p>
+                    <p class="feedback-name">Trần Thị Thu Hà - Khách hàng</p>
+                    <div class="feedback-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="feedback-item">
+                <div class="feedback-avatar">
+                    <img src="https://pepsilan.com/wp-content/uploads/2022/12/full-bo-anh-dan-ong-trung-nien-viet-nam-dep-nhat-vn-42.jpg"
+                        alt="Avatar Khách hàng 3">
+                </div>
+                <div class="feedback-content">
+                    <p class="feedback-text">"Tôi đã sử dụng dịch vụ tư vấn thiết kế và rất ưng ý. Các kiến trúc sư của
+                        Hà Anh Nam rất sáng tạo và tận tâm. Những dự án tương lai chắc chắn vẫn lựa chọn Hà Anh Nam"</p>
+                    <p class="feedback-name">Nguyễn Thạc Văn - Khách hàng</p>
+                    <div class="feedback-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-column">
             <h3>Thông Tin Công Ty</h3>
@@ -1603,9 +1784,14 @@
                     style="width: 100px; height: 100px; border-radius: 5px;" />
             </div>
         </div>
-        <p style="text-align: center; padding: 20px 0; color: whitesmoke; font-size: 14px;">© 2025 Hà Anh Nam. Bảo lưu
-            mọi quyền. Thiết kế bởi Vũ Hoàng Hà. Điều khoản sử dụng | Chính sách bảo mật</p>
+
     </footer>
+    <p
+        style="text-align: center; padding: 20px 0; margin: 0 auto; color: whitesmoke; font-size: 14px; background-color: #34495e; max-width: 1200px;">
+        ©
+        2025 Hà Anh Nam. Bảo lưu
+        mọi quyền bởi Vũ Hoàng Hà. Điều khoản sử dụng | Chính sách bảo mật</p>
+
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
