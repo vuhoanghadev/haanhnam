@@ -35,14 +35,24 @@
             flex-wrap: wrap;
             /* Cho phép xuống dòng trên mobile */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+
         }
 
         /* Kiểu dáng cho logo */
         header img {
-            max-width: clamp(150px, 20vw, 210px);
+            max-width: clamp(150px, 20vw, 160px);
             /* Kích thước logo linh hoạt */
             transition: transform 0.3s ease;
             object-fit: contain;
+            /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 10px;
+            padding-left: 10px */
+            /* animation: fadeInDown 1s ease-in-out; */
+
         }
 
         header img:hover {
@@ -60,7 +70,9 @@
 
         /* Kiểu dáng cho tiêu đề h2 trong header */
         .header-info h2 {
-            color: #ffd700;
+            /* color: #e6e6e6; */
+            color: #e67e22;
+            /* color: #ffeb3b; */
             font-size: clamp(1.5em, 3vw, 1.8em);
             /* Kích thước chữ linh hoạt */
             font-family: 'Montserrat', serif;
@@ -70,10 +82,16 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             margin-bottom: 12px;
             transition: color 0.3s ease;
+            text-shadow:
+                4px 0 0 rgb(22, 22, 22),
+                0 1px 0 rgb(20, 20, 20),
+                -1px 0 0 rgb(15, 15, 15),
+                0 -1px 0 rgb(0, 0, 0);
+            animation: slideInRight 0.5s ease-in-out 1s ease-in-out;
         }
 
         .header-info h2:hover {
-            color: #ffeb3b;
+            color: #d9d9d9;
         }
 
         /* Kiểu dáng cho các đoạn p trong header */
@@ -114,6 +132,7 @@
             line-height: 1.5;
             text-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
             transition: color 0.3s ease;
+            animation: fadeInDown 1s ease-in-out;
         }
 
         .header-info p:nth-child(5):hover {
@@ -263,7 +282,7 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            animation: slideshow 15s infinite;
+            animation: slideshow 12s infinite;
         }
 
         .banner-slideshow img:nth-child(1) {
@@ -271,11 +290,11 @@
         }
 
         .banner-slideshow img:nth-child(2) {
-            animation-delay: 5s;
+            animation-delay: 4s;
         }
 
         .banner-slideshow img:nth-child(3) {
-            animation-delay: 10s;
+            animation-delay: 8s;
         }
 
         @keyframes slideshow {
@@ -1043,6 +1062,11 @@
 
             .header-info h2 {
                 font-size: 1.3em;
+                text-shadow:
+                    3px 0 0 rgb(22, 22, 22),
+                    0 1px 0 rgb(20, 20, 20),
+                    -1px 0 0 rgb(15, 15, 15),
+                    0 -1px 0 rgb(0, 0, 0);
             }
 
             .header-info p:last-child::before {
@@ -1583,7 +1607,7 @@
 
 <body>
     <header>
-        <img src="./image/Asset 3@16x.png" alt="Hà Anh Nam Logo" />
+        <img src="./image/logo 1.svg" alt="Hà Anh Nam Logo" />
         <div class="header-info">
             <h2 class="header-h2">CÔNG TY TNHH TƯ VẤN, XÂY DỰNG - HÀ ANH NAM</h2>
             <p>THƯƠNG HIỆU XÂY MỚI, SỬA CHỮA NHÀ UY TÍN - XÂY DỰNG TỪ TÂM - NÂNG TẦM ĐẲNG CẤP.</p>
@@ -1894,8 +1918,7 @@
             </ul>
             <h3>Cách Ứng Tuyển</h3>
             <p>Gửi CV về email: <strong>haanhnam@gmail.com</strong>
-                hoặc liên hệ hotline <strong>0989 912
-                    379</strong>.</p>
+                hoặc liên hệ hotline <strong>0989 912 379</strong>.</p>
             <div class="gallery">
                 <img src="https://kjob.vn/wp-content/uploads/2022/07/bi-quyet-tuyen-dung-cong-nhan-hieu-qua-nhat-kjob.vn_-1.jpg"
                     alt="Đội ngũ kỹ sư">
@@ -2140,7 +2163,7 @@
             // Show the initial message
             setTimeout(() => {
                 fabButton.classList.remove('show-message');
-            }, 3000);
+            }, 5000);
 
             fabButton.addEventListener('click', function (event) {
                 event.preventDefault();
