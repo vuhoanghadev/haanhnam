@@ -1238,6 +1238,48 @@
                 background-color: #3498db;
                 /* Giữ màu nền khi sticky */
             }
+
+            .fab-container {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .fab-button {
+                width: 50px;
+                height: 50px;
+            }
+
+            .fab-button i {
+                font-size: 20px;
+            }
+
+            .fab-message {
+                padding: 8px 12px;
+                font-size: 0.9em;
+                max-width: 200px;
+            }
+
+            .fab-contact-box {
+                width: 250px;
+                /* Giảm kích thước trên mobile */
+                padding: 10px;
+            }
+
+            .fab-contact-box .avatar {
+                width: 40px;
+                height: 40px;
+            }
+
+            .fab-contact-box .contact-info,
+            .fab-contact-box .social-link {
+                font-size: 12px;
+                /* Kích thước chữ nhỏ hơn trên mobile */
+            }
+
+            .fab-contact-box .social-icon {
+                font-size: 18px;
+                /* Biểu tượng nhỏ hơn trên mobile */
+            }
         }
 
         @media (min-width: 481px) {
@@ -1277,8 +1319,264 @@
             .overlay {
                 display: none !important;
             }
+        }
+
+        /* Floating Action Button (FAB) Styles */
+        .fab-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .fab-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #e67e22;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            /* Đảm bảo làm tham chiếu cho các biểu tượng */
+        }
+
+        .fab-button:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
+        }
+
+        .fab-button i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+        }
+
+        /* Initial message */
+        .fab-message {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            transform: translateX(50%);
+            background-color: #e67e22;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            pointer-events: none;
+            max-width: 250px;
+            text-align: center;
+            z-index: -1;
+        }
+
+        .fab-message::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 86%;
+            transform: translateX(-50%);
+            border-width: 10px;
+            border-style: solid;
+            border-color: #e67e22 transparent transparent transparent;
+        }
+
+        .fab-button.show-message .fab-message {
+            opacity: 1;
+            transform: translateX(0) translateY(-5px);
+        }
+
+        /* Pulse effect */
+        .pulse-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            z-index: 0;
+            /* Đặt dưới các biểu tượng */
+        }
+
+        .fab-button i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            z-index: 1;
+            /* Đặt trên pulse-effect */
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0px rgba(230, 126, 34, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(230, 126, 34, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0px rgba(230, 126, 34, 0);
+            }
+        }
+
+        /* Contact box */
+        .fab-contact-box {
+            position: absolute;
+            bottom: calc(100% + 20px);
+            right: 0;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 15px;
+            width: 300px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+            border: 1px solid #f0f0f0;
+            z-index: 1003;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+        }
+
+        .fab-contact-box.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .fab-contact-box::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: #ffffff transparent transparent transparent;
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.05));
+        }
+
+        .fab-contact-box .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #34495e;
+        }
+
+        .fab-contact-box .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            /* border: 2px solid #e67e22; */
+            /* border: 3px solid #3498db; */
+
+            position: relative;
+            /* Để định vị chấm tròn */
+        }
+
+        /* Định dạng avatar và social icon */
+        .avatar-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Chấm xanh */
+        .status-dot {
+            position: absolute;
+            bottom: 2px;
+            /* Điều chỉnh vị trí chấm xanh */
+            right: 2px;
+            width: 14px;
+            height: 14px;
+            background-color: #03b603;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+            z-index: 100;
+        }
 
 
+        .fab-contact-box .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            text-decoration: none;
+            color: #34495e;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .fab-contact-box .social-link img {
+            width: 50px;
+            /* Kích thước bằng với avatar */
+            height: 50px;
+            border-radius: 50%;
+            /* Hình tròn */
+            object-fit: contain;
+            /* Đảm bảo hình ảnh không bị méo */
+            margin-right: 2px;
+            /* Khoảng cách với văn bản */
+        }
+
+        .fab-contact-box .social-link:hover {
+            color: #e67e22;
+        }
+
+        .fab-contact-box .social-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            /* Kích thước tương đương avatar */
+            height: 50px;
+            border-radius: 50%;
+            /* Nền tròn */
+            background-color: #e67e22;
+            /* Màu nền chủ đạo */
+            color: white;
+            /* Màu icon trắng */
+            font-size: 24px;
+            /* Kích thước icon phù hợp */
+            margin-right: 5px;
+            /* Khoảng cách với văn bản */
+        }
+
+        .fab-contact-box .social-link i {
+            margin-right: 0;
+            /* Xóa margin vì đã xử lý bằng flex và kích thước */
+        }
+
+        .fab-button.active {
+            background-color: #d35400;
+        }
+
+        .fab-button.active i.fa-phone {
+            display: none;
+        }
+
+        .fab-button.active i.fa-xmark {
+            display: inline-block;
+        }
+
+        .fab-button i.fa-xmark {
+            display: none;
         }
     </style>
 </head>
@@ -1652,6 +1950,37 @@
         <button class="close-success">Đóng</button>
     </div>
 
+    <!-- FAB Container -->
+    <div class="fab-container">
+        <a href="#" class="fab-button show-message" title="Liên Hệ">
+            <span class="fab-message">Bạn đang cần tư vấn nhanh?</span>
+            <span class="pulse-effect"></span>
+            <i class="fas fa-phone"></i>
+            <i class="fas fa-xmark"></i>
+            <div class="fab-contact-box">
+                <div class="contact-info">
+                    <div class="avatar-container">
+                        <img src="./image/mrmaianh.jpg" alt="Ms. Trang" class="avatar">
+                        <div class="status-dot"></div> <!-- Chấm xanh -->
+                    </div>
+                    <span>0989 912 379 (Ms. Mai Anh)</span>
+                </div>
+                <a href="https://m.me/your_messenger_username" target="_blank" class="social-link">
+                    <div class="avatar-container">
+                        <img src="./image/Facebook_Messenger_logo_2018.svg.png" alt="Messenger">
+                        <div class="status-dot"></div> <!-- Chấm xanh -->
+                    </div>
+                    Messenger
+                </a>
+                <a href="https://zalo.me/your_zalo_number" target="_blank" class="social-link">
+                    <img src="./image/Icon_of_Zalo.svg.webp" alt="Zalo">
+                    Zalo
+                </a>
+            </div>
+        </a>
+    </div>
+
+
 
     <!-- Phần phản hồi của khách hàng (thêm vào đây) -->
     <section class="customer-feedback" id="feedback">
@@ -1802,6 +2131,20 @@
             const overlay = document.querySelector('.overlay');
             const servicesLink = document.querySelector('.services-arrow');
             const navItem = document.querySelector('.nav-item');
+            // JavaScript for FAB
+            const fabButton = document.querySelector('.fab-button');
+            const fabContactBox = document.querySelector('.fab-contact-box');
+
+            // Show the initial message
+            setTimeout(() => {
+                fabButton.classList.remove('show-message');
+            }, 3000);
+
+            fabButton.addEventListener('click', function (event) {
+                event.preventDefault();
+                fabButton.classList.toggle('active');
+                fabContactBox.classList.toggle('active');
+            });
 
             if (hamburger && navLinks && closeBtn && overlay && servicesLink && navItem) {
                 hamburger.addEventListener('click', () => {
