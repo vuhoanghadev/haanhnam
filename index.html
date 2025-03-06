@@ -1258,8 +1258,20 @@
                 padding: 10px;
             }
 
+            .footer-certificates {
+                justify-content: space-between;
+                /* Phân bố đều để kiểm soát số lượng trên hàng */
+                gap: 15px;
+                /* Giảm khoảng cách cho mobile */
+            }
+
             .footer-certificates img {
                 max-width: 80px;
+                /* Giảm kích thước cho mobile */
+                flex: 0 0 calc(33.33% - 10px);
+                /* Đảm bảo 3 ảnh trên 1 hàng */
+                margin: 0;
+                /* Xóa margin mặc định nếu có */
             }
 
             .banner {
@@ -1485,6 +1497,9 @@
 
             .footer-certificates img {
                 max-width: 60px;
+                /* Giảm kích thước hơn nữa cho màn hình rất nhỏ */
+                flex: 0 0 calc(33.33% - 10px);
+                /* Vẫn giữ 3 ảnh trên 1 hàng */
             }
 
             .modal {
@@ -2481,7 +2496,7 @@
                 <img src="https://stahomes.vn/wp-content/uploads/512x512.44eb9f72447691968ff87c6b83335502.ai_.1.png"
                     alt="SSL Certificate" />
                 <img src="https://locnamviet.com/upload/news/son-jotun1594966571.png" alt="Partner 1" />
-                <img src="http://www.g9paint.com/skins/oto/images/logo-g9-paint.png" alt="Partner 2" />
+                <img src="./image/logo-g9-paint.png" alt="Partner 2" />
             </div>
         </div>
 
