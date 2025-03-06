@@ -14,7 +14,7 @@
     <meta property="og:url" content="https://vuhoanghadev.github.io/haanhnam/" />
     <meta property="og:type" content="website" />
 
-
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,6 +32,78 @@
             color: #333;
             position: relative;
             overflow-x: hidden;
+        }
+
+        /* Back to Top Button Styles */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            /* Cách đáy 30px để không sát quá */
+            left: 30px;
+            /* Cách mép trái 30px để tránh che nội dung */
+            width: 50px;
+            height: 50px;
+            background-color: #e67e22;
+            /* Đồng bộ với màu cam chủ đạo */
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            opacity: 0;
+            /* Ẩn ban đầu */
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 999;
+            /* Đặt dưới FAB (z-index: 1000) */
+        }
+
+        .back-to-top.show {
+            opacity: 0.7;
+            /* Mờ nhẹ khi hiển thị, tăng khi hover */
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            opacity: 1;
+            /* Rõ hơn khi hover */
+            background-color: #d35400;
+            /* Màu hover đậm hơn, đồng bộ FAB */
+            transform: translateY(-5px);
+            /* Nâng nhẹ khi hover */
+        }
+
+        .back-to-top i {
+            font-size: 20px;
+        }
+
+        /* Pulse effect (tương tự FAB) */
+        .back-to-top.show::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0px rgba(230, 126, 34, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(230, 126, 34, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0px rgba(230, 126, 34, 0);
+            }
         }
 
         header {
@@ -272,6 +344,21 @@
             color: white;
             text-align: center;
             overflow: hidden;
+        }
+
+        .banner-slideshow img.parallax {
+            position: absolute;
+            top: -10%;
+            /* Tăng chiều cao để có không gian di chuyển */
+            left: 0;
+            width: 100%;
+            height: 120%;
+            /* Tăng chiều cao để tạo hiệu ứng */
+            object-fit: cover;
+            opacity: 0;
+            animation: slideshow 12s infinite;
+            transition: transform 0.1s ease-out;
+            /* Mượt mà khi cuộn */
         }
 
         .banner-slideshow {
@@ -588,12 +675,165 @@
             font-size: 1.1em;
         }
 
+        /* Xóa biểu tượng mặc định và thay bằng Font Awesome */
         .modal-content ul li:before {
+            content: none;
+            /* Xóa mũi tên mặc định */
+        }
+
+        /* Thêm biểu tượng cụ thể cho từng modal */
+        #modal-services .modal-content ul li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #e67e22;
+            font-size: 1em;
+        }
+
+        #modal-build .modal-content ul li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #3498db;
+            /* Màu xanh để phân biệt */
+            font-size: 1em;
+        }
+
+        #modal-recruit .modal-content ul li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #2ecc71;
+            /* Màu xanh lá cho tuyển dụng */
+            font-size: 1em;
+        }
+
+        /* Thêm biểu tượng cho các modal còn lại */
+        #modal-repair-home .modal-content ul li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #e67e22;
+            /* Màu cam giống dịch vụ */
+            font-size: 1em;
+        }
+
+        #modal-repair-office .modal-content ul li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #3498db;
+            /* Màu xanh dương */
+            font-size: 1em;
+        }
+
+        #modal-projects .modal-content ul li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #f1c40f;
+            /* Màu vàng cho dự án nổi bật */
+            font-size: 1em;
+        }
+
+        /* Progress Bar Styles */
+        .project-list {
+            padding-left: 0;
+        }
+
+        .project-list li {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .project-list li:before {
             content: '➤';
             color: #e67e22;
             position: absolute;
             left: 0;
             top: 2px;
+        }
+
+        .progress-container {
+            margin-top: 10px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .progress-label {
+            display: block;
+            font-size: 0.9em;
+            color: #34495e;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #e67e22;
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+            /* Hiệu ứng chuyển động mượt */
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        #modal-consult .modal-content ul li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #2ecc71;
+            /* Màu xanh lá */
+            font-size: 1em;
+        }
+
+        #modal-news .modal-content ul li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #e74c3c;
+            /* Màu đỏ cho tin tức */
+            font-size: 1em;
+        }
+
+        #modal-contact .modal-content ul li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #9b59b6;
+            /* Màu tím cho liên hệ */
+            font-size: 1em;
         }
 
         .modal-content img {
@@ -1056,6 +1296,18 @@
         }
 
         @media (max-width: 480px) {
+
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: 20px;
+                left: 20px;
+            }
+
+            .back-to-top i {
+                font-size: 16px;
+            }
+
             header {
                 padding: 20px 19px;
             }
@@ -1384,6 +1636,38 @@
             transform: translateY(-2px);
         }
 
+        /* Thêm class khi nhấp để kích hoạt hiệu ứng rung */
+        .fab-button.vibrate {
+            animation: vibrate 0.3s ease;
+        }
+
+        /* Keyframes cho hiệu ứng rung nhẹ */
+        @keyframes vibrate {
+            0% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-2px);
+            }
+
+            40% {
+                transform: translateX(2px);
+            }
+
+            60% {
+                transform: translateX(-2px);
+            }
+
+            80% {
+                transform: translateX(2px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
         .fab-button i {
             position: absolute;
             top: 50%;
@@ -1615,6 +1899,10 @@
 </head>
 
 <body>
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
     <header>
         <img src="./image/logo6.png" alt="Hà Anh Nam Logo" />
         <div class="header-info">
@@ -1663,9 +1951,9 @@
 
     <section class="banner">
         <div class="banner-slideshow">
-            <img src="./image/banner1.webp" alt="Slide 1">
-            <img src="./image/banner2.jpg" alt="Slide 2">
-            <img src="./image/banner3.jpg" alt="Slide 3">
+            <img src="./image/banner1.webp" alt="Slide 1" class="parallax">
+            <img src="./image/banner2.jpg" alt="Slide 2" class="parallax">
+            <img src="./image/banner3.jpg" alt="Slide 3" class="parallax">
         </div>
         <div class="banner-overlay"></div>
         <div class="banner-content">
@@ -1678,7 +1966,7 @@
     <section class="about-us" id="about">
         <h2>Về chúng tôi</h2>
         <div class="about-content">
-            <img src="./image/ảnh về chúng tôi.webp" alt="Hà Anh Nam Team" />
+            <img src="./image/ảnh về chúng tôi.webp" alt="Hà Anh Nam Team" class="parallax" />
             <div class="about-text">
                 <h3>CÔNG TY TNHH TƯ VẤN, XÂY DỰNG – HÀ ANH NAM</h3>
                 <p><strong>XÂY DỰNG TỪ TÂM - NÂNG TẦM ĐẲNG CẤP</strong></p>
@@ -1718,14 +2006,14 @@
             <p>Hà Anh Nam tự hào cung cấp các giải pháp xây dựng và sửa chữa toàn diện, đáp ứng mọi nhu cầu của khách
                 hàng từ nhà ở đến văn phòng:</p>
             <ul>
-                <li><strong>Xây Nhà Trọn Gói</strong>: Thiết kế và thi công từ A-Z, đảm bảo chất lượng cao, tiến độ
-                    nhanh.</li>
-                <li><strong>Sửa Chữa Nhà Ở</strong>: Cải tạo, nâng cấp không gian sống theo phong cách hiện đại hoặc cổ
-                    điển tùy ý.</li>
-                <li><strong>Sửa Chữa Văn Phòng</strong>: Tối ưu không gian làm việc với thiết kế chuyên nghiệp, tiện
-                    nghi.</li>
-                <li><strong>Tư Vấn Thiết Kế</strong>: Đưa ra giải pháp tối ưu hóa không gian và chi phí cho từng dự án.
-                </li>
+                <li><i class="fas fa-check"></i> <strong>Xây Nhà Trọn Gói</strong>: Thiết kế và thi công từ A-Z, đảm bảo
+                    chất lượng cao, tiến độ nhanh.</li>
+                <li><i class="fas fa-check"></i> <strong>Sửa Chữa Nhà Ở</strong>: Cải tạo, nâng cấp không gian sống theo
+                    phong cách hiện đại hoặc cổ điển tùy ý.</li>
+                <li><i class="fas fa-check"></i> <strong>Sửa Chữa Văn Phòng</strong>: Tối ưu không gian làm việc với
+                    thiết kế chuyên nghiệp, tiện nghi.</li>
+                <li><i class="fas fa-check"></i> <strong>Tư Vấn Thiết Kế</strong>: Đưa ra giải pháp tối ưu hóa không
+                    gian và chi phí cho từng dự án.</li>
             </ul>
             <h3>Vì Sao Chọn Chúng Tôi?</h3>
             <p>Chúng tôi cam kết mang đến trải nghiệm dịch vụ tốt nhất với đội ngũ kỹ sư giàu kinh nghiệm, vật liệu chất
@@ -1747,12 +2035,12 @@
             <h3>Các Gói Xây Dựng</h3>
             <p>Chúng tôi cung cấp các gói xây nhà linh hoạt phù hợp với mọi ngân sách:</p>
             <ul>
-                <li><strong>Gói Cơ Bản - 5.5 triệu/m²</strong>: Vật liệu tiêu chuẩn, thiết kế đơn giản, hoàn thiện trong
-                    3-4 tháng.</li>
-                <li><strong>Gói Nâng Cao - 7 triệu/m²</strong>: Vật liệu cao cấp, thiết kế hiện đại, tích hợp công nghệ
-                    tiết kiệm năng lượng.</li>
-                <li><strong>Gói Cao Cấp - 10 triệu/m²</strong>: Vật liệu nhập khẩu, thiết kế sang trọng, tối ưu không
-                    gian sống.</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Gói Cơ Bản - 5.5 triệu/m²</strong>: Vật liệu tiêu chuẩn,
+                    thiết kế đơn giản, hoàn thiện trong 3-4 tháng.</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Gói Nâng Cao - 7 triệu/m²</strong>: Vật liệu cao cấp,
+                    thiết kế hiện đại, tích hợp công nghệ tiết kiệm năng lượng.</li>
+                <li><i class="fas fa-arrow-right"></i> <strong>Gói Cao Cấp - 10 triệu/m²</strong>: Vật liệu nhập khẩu,
+                    thiết kế sang trọng, tối ưu không gian sống.</li>
             </ul>
             <h3>Quy Trình Làm Việc</h3>
             <p>Tư vấn miễn phí → Khảo sát hiện trạng → Thiết kế bản vẽ → Báo giá chi tiết → Thi công → Bàn giao & bảo
@@ -1777,12 +2065,12 @@
             <h3>Các Gói Sửa Chữa</h3>
             <p>Chúng tôi mang đến các giải pháp cải tạo nhà ở linh hoạt:</p>
             <ul>
-                <li><strong>Gói Nhỏ - 50 triệu</strong>: Sơn lại tường, sửa chữa điện nước, thay thế nội thất cơ bản.
-                </li>
-                <li><strong>Gói Trung - 100 triệu</strong>: Cải tạo nội thất, nâng cấp phòng khách, bếp, nhà vệ sinh.
-                </li>
-                <li><strong>Gói Lớn - 200 triệu+</strong>: Đại tu toàn bộ, thay đổi kết cấu, mở rộng không gian sống.
-                </li>
+                <li><i class="fas fa-tools"></i> <strong>Gói Nhỏ - 50 triệu</strong>: Sơn lại tường, sửa chữa điện nước,
+                    thay thế nội thất cơ bản.</li>
+                <li><i class="fas fa-tools"></i> <strong>Gói Trung - 100 triệu</strong>: Cải tạo nội thất, nâng cấp
+                    phòng khách, bếp, nhà vệ sinh.</li>
+                <li><i class="fas fa-tools"></i> <strong>Gói Lớn - 200 triệu+</strong>: Đại tu toàn bộ, thay đổi kết
+                    cấu, mở rộng không gian sống.</li>
             </ul>
             <h3>Lợi Ích</h3>
             <p>Tiết kiệm chi phí, thời gian thi công nhanh, bảo hành dài hạn lên đến 5 năm.</p>
@@ -1807,10 +2095,11 @@
             <h3>Dịch Vụ Văn Phòng</h3>
             <p>Chúng tôi chuyên cải tạo và nâng cấp không gian làm việc:</p>
             <ul>
-                <li>Thiết kế văn phòng hiện đại, tối ưu ánh sáng và không gian.</li>
-                <li>Lắp đặt hệ thống điện, mạng, điều hòa chuyên nghiệp.</li>
-                <li>Hoàn thiện nội thất theo phong cách doanh nghiệp (từ cổ điển đến tối giản).</li>
-                <li>Tư vấn phong thủy cho môi trường làm việc hài hòa.</li>
+                <li><i class="fas fa-building"></i> Thiết kế văn phòng hiện đại, tối ưu ánh sáng và không gian.</li>
+                <li><i class="fas fa-building"></i> Lắp đặt hệ thống điện, mạng, điều hòa chuyên nghiệp.</li>
+                <li><i class="fas fa-building"></i> Hoàn thiện nội thất theo phong cách doanh nghiệp (từ cổ điển đến tối
+                    giản).</li>
+                <li><i class="fas fa-building"></i> Tư vấn phong thủy cho môi trường làm việc hài hòa.</li>
             </ul>
             <h3>Cam Kết</h3>
             <p>Thi công không làm gián đoạn công việc, bàn giao đúng tiến độ, hỗ trợ bảo trì dài hạn.</p>
@@ -1835,15 +2124,47 @@
         <div class="modal-content">
             <h3>Các Dự Án Nổi Bật</h3>
             <p>Dưới đây là một số công trình tiêu biểu do Hà Anh Nam thực hiện:</p>
-            <ul>
-                <li><strong>Biệt Thự 3 Tầng - Hòa Bình (2024)</strong>: Thiết kế hiện đại, diện tích 250m², hoàn thành
-                    trong 5 tháng.</li>
-                <li><strong>Nhà Phố 4 Tầng - Hà Nội (2023)</strong>: Tiết kiệm 15% chi phí, tích hợp hệ thống nhà thông
-                    minh.</li>
-                <li><strong>Văn Phòng 500m² - Hòa Bình (2022)</strong>: Cải tạo không gian làm việc, tối ưu ánh sáng tự
-                    nhiên.</li>
-                <li><strong>Khu Nghỉ Dưỡng - Ba Vì (2021)</strong>: Thiết kế xanh, sử dụng vật liệu thân thiện môi
-                    trường.</li>
+            <ul class="project-list">
+                <li>
+                    <strong>Biệt Thự 3 Tầng - Hòa Bình (2024)</strong>: Thiết kế hiện đại, diện tích 250m², hoàn thành
+                    trong 5 tháng.
+                    <div class="progress-container">
+                        <span class="progress-label">Hoàn thành: 100%</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <strong>Nhà Phố 4 Tầng - Hà Nội (2023)</strong>: Tiết kiệm 15% chi phí, tích hợp hệ thống nhà thông
+                    minh.
+                    <div class="progress-container">
+                        <span class="progress-label">Hoàn thành: 100%</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <strong>Văn Phòng 500m² - Hòa Bình (Đang thi công)</strong>: Cải tạo không gian làm việc, tối ưu ánh
+                    sáng tự nhiên.
+                    <div class="progress-container">
+                        <span class="progress-label">Tiến độ: 75%</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <strong>Khu Nghỉ Dưỡng - Ba Vì (Đang thi công)</strong>: Thiết kế xanh, sử dụng vật liệu thân thiện
+                    môi trường.
+                    <div class="progress-container">
+                        <span class="progress-label">Tiến độ: 40%</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%;"></div>
+                        </div>
+                    </div>
+                </li>
             </ul>
             <h3>Hình Ảnh Dự Án</h3>
             <div class="gallery">
@@ -1867,11 +2188,11 @@
             <h3>Dịch Vụ Tư Vấn</h3>
             <p>Chúng tôi cung cấp dịch vụ tư vấn chuyên sâu cho mọi dự án xây dựng:</p>
             <ul>
-                <li>Lập kế hoạch chi tiết từ ý tưởng đến thực thi.</li>
-                <li>Tối ưu chi phí, đảm bảo không phát sinh ngoài dự toán.</li>
-                <li>Hỗ trợ pháp lý: xin cấp phép xây dựng, kiểm định chất lượng.</li>
-                <li>Tư vấn vật liệu và giải pháp kỹ thuật tiên tiến.</li>
-                <li>Giám sát thi công 24/7 qua ứng dụng trực tuyến.</li>
+                <li><i class="fas fa-headset"></i> Lập kế hoạch chi tiết từ ý tưởng đến thực thi.</li>
+                <li><i class="fas fa-headset"></i> Tối ưu chi phí, đảm bảo không phát sinh ngoài dự toán.</li>
+                <li><i class="fas fa-headset"></i> Hỗ trợ pháp lý: xin cấp phép xây dựng, kiểm định chất lượng.</li>
+                <li><i class="fas fa-headset"></i> Tư vấn vật liệu và giải pháp kỹ thuật tiên tiến.</li>
+                <li><i class="fas fa-headset"></i> Giám sát thi công 24/7 qua ứng dụng trực tuyến.</li>
             </ul>
             <h3>Liên Hệ Ngay</h3>
             <p>Gọi hotline <strong>0989 912 379</strong> hoặc để lại thông tin để nhận tư vấn miễn phí trong 24h!</p>
@@ -1891,12 +2212,14 @@
             <h3>Tin Tức Mới Nhất</h3>
             <p>Cập nhật hoạt động và xu hướng xây dựng từ Hà Anh Nam:</p>
             <ul>
-                <li><strong>03/2025</strong>: Khai trương chi nhánh mới tại Hà Nội, mở rộng dịch vụ ra miền Bắc.</li>
-                <li><strong>01/2025</strong>: Hoàn thành biệt thự 300m² tại Hòa Bình với thiết kế xanh độc đáo.</li>
-                <li><strong>12/2024</strong>: Ra mắt gói xây nhà tiết kiệm 2025, giảm 10% chi phí cho khách hàng mới.
-                </li>
-                <li><strong>11/2024</strong>: Tham gia hội chợ xây dựng Việt Nam, giới thiệu vật liệu thân thiện môi
-                    trường.</li>
+                <li><i class="fas fa-newspaper"></i> <strong>03/2025</strong>: Khai trương chi nhánh mới tại Hà Nội, mở
+                    rộng dịch vụ ra miền Bắc.</li>
+                <li><i class="fas fa-newspaper"></i> <strong>01/2025</strong>: Hoàn thành biệt thự 300m² tại Hòa Bình
+                    với thiết kế xanh độc đáo.</li>
+                <li><i class="fas fa-newspaper"></i> <strong>12/2024</strong>: Ra mắt gói xây nhà tiết kiệm 2025, giảm
+                    10% chi phí cho khách hàng mới.</li>
+                <li><i class="fas fa-newspaper"></i> <strong>11/2024</strong>: Tham gia hội chợ xây dựng Việt Nam, giới
+                    thiệu vật liệu thân thiện môi trường.</li>
             </ul>
             <h3>Hình Ảnh Sự Kiện</h3>
             <div class="gallery">
@@ -1917,13 +2240,14 @@
             <h3>Cơ Hội Nghề Nghiệp</h3>
             <p>Hà Anh Nam đang tìm kiếm nhân tài đồng hành cùng sự phát triển:</p>
             <ul>
-                <li><strong>Kỹ Sư Xây Dựng</strong>: Kinh nghiệm 3+ năm, lương 15-20 triệu/tháng, thưởng dự án.</li>
-                <li><strong>Nhân Viên Kinh Doanh</strong>: Không yêu cầu kinh nghiệm, lương cơ bản 8 triệu + hoa hồng
-                    không giới hạn.</li>
-                <li><strong>Thợ Xây Chính</strong>: Làm việc tại công trình, thu nhập 12-18 triệu/tháng, hỗ trợ chỗ ở.
-                </li>
-                <li><strong>Nhân Viên Thiết Kế</strong>: Sử dụng thành thạo AutoCAD, SketchUp, lương 12-15 triệu/tháng.
-                </li>
+                <li><i class="fas fa-briefcase"></i> <strong>Kỹ Sư Xây Dựng</strong>: Kinh nghiệm 3+ năm, lương 15-20
+                    triệu/tháng, thưởng dự án.</li>
+                <li><i class="fas fa-briefcase"></i> <strong>Nhân Viên Kinh Doanh</strong>: Không yêu cầu kinh nghiệm,
+                    lương cơ bản 8 triệu + hoa hồng không giới hạn.</li>
+                <li><i class="fas fa-briefcase"></i> <strong>Thợ Xây Chính</strong>: Làm việc tại công trình, thu nhập
+                    12-18 triệu/tháng, hỗ trợ chỗ ở.</li>
+                <li><i class="fas fa-briefcase"></i> <strong>Nhân Viên Thiết Kế</strong>: Sử dụng thành thạo AutoCAD,
+                    SketchUp, lương 12-15 triệu/tháng.</li>
             </ul>
             <h3>Cách Ứng Tuyển</h3>
             <p>Gửi CV về email: <strong>haanhnam@gmail.com</strong>
@@ -1946,11 +2270,12 @@
             <h3>Thông Tin Liên Hệ</h3>
             <p>Chúng tôi luôn sẵn sàng hỗ trợ bạn bất cứ lúc nào:</p>
             <ul>
-                <li><strong>Hotline</strong>: 0989 912 379 (24/7)</li>
-                <li><strong>Email</strong>: <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                        data-cfemail="2a03040c052a020b0b0402040b0744090507">haanhnam@gmail.com</a></li>
-                <li><strong>Địa chỉ</strong>: Tân Thịnh, Yên Trị, Yên Thủy, Hòa Bình</li>
-                <li><strong>Thời gian làm việc</strong>: 08:00 - 18:00, Thứ 2 - Thứ 7</li>
+                <li><i class="fas fa-phone"></i> <strong>Hotline</strong>: 0989 912 379 (24/7)</li>
+                <li><i class="fas fa-envelope"></i> <strong>Email</strong>: <a href=""
+                        style="text-decoration: none; color: #e67e22">haanhnam@gmail.com</a></li>
+                <li><i class="fas fa-map-marker-alt"></i> <strong>Địa chỉ</strong>: Tân Thịnh, Yên Trị, Yên Thủy, Hòa
+                    Bình</li>
+                <li><i class="fas fa-clock"></i> <strong>Thời gian làm việc</strong>: 08:00 - 18:00, Thứ 2 - Thứ 7</li>
             </ul>
             <h3>Gửi Yêu Cầu Tư Vấn</h3>
             <p>Vui lòng để lại thông tin, chúng tôi sẽ liên hệ trong vòng 24h:</p>
@@ -1995,18 +2320,15 @@
                 <div class="contact-info">
                     <div class="avatar-container">
                         <img src="./image/mrmaianh.jpg" alt="Ms. Mai Anh" class="avatar">
-                        <div class="status-dot"></div> <!-- Chấm xanh -->
+                        <div class="status-dot"></div>
                     </div>
-                    <!-- <span> 0989 912 379 (Ms. Mai Anh)</span> -->
                     <a href="tel:0989912379" style="color: #34495e; text-decoration: none;">0989 912 379 (Ms. Mai
                         Anh)</a>
-
-
                 </div>
                 <a href="https://facebook.com/vuhoangha.dev/" target="_blank" class="social-link">
                     <div class="avatar-container">
                         <img src="./image/Facebook_Messenger_logo_2018.svg.png" alt="Messenger">
-                        <div class="status-dot"></div> <!-- Chấm xanh -->
+                        <div class="status-dot"></div>
                     </div>
                     Messenger
                 </a>
@@ -2163,6 +2485,61 @@
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+
+            // Cấu hình ScrollReveal toàn cục
+            ScrollReveal({
+                reset: false,          // Không lặp lại hiệu ứng khi cuộn qua lại
+                distance: '50px',      // Khoảng cách di chuyển của hiệu ứng
+                duration: 1000,        // Thời gian hiệu ứng (ms)
+                delay: 200,            // Độ trễ trước khi bắt đầu (ms)
+                origin: 'bottom'       // Hướng xuất hiện (từ dưới lên)
+            });
+
+            // Áp dụng hiệu ứng cho section About
+            ScrollReveal().reveal('.about-us', {
+                delay: 300,            // Độ trễ riêng cho About
+                interval: 200,
+                reset: true  // Độ trễ giữa các phần tử con (nếu có)
+            });
+            // Áp dụng hiệu ứng cho section Customer Feedback
+            ScrollReveal().reveal('.customer-feedback', {
+                delay: 300,            // Độ trễ riêng cho Feedback
+                interval: 200,
+                reset: true          // Độ trễ giữa các feedback-item
+            });
+
+
+            // Nếu muốn từng feedback-item hiện lần lượt
+            ScrollReveal().reveal('.feedback-item', {
+                interval: 300          // Mỗi feedback-item cách nhau 300ms
+            });
+
+            const backToTopButton = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { // Hiển thị nút khi cuộn xuống quá 300px
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth' // Cuộn mượt lên đầu trang
+                });
+            });
+
+            const parallaxImages = document.querySelectorAll('.banner-slideshow img.parallax');
+            window.addEventListener('scroll', function () {
+                const scrollPosition = window.scrollY;
+                parallaxImages.forEach(img => {
+                    // Tốc độ di chuyển chậm hơn so với cuộn (0.3 là hệ số parallax)
+                    const offset = scrollPosition * 0.3;
+                    img.style.transform = `translateY(${offset}px)`;
+                });
+            });
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
             const closeBtn = document.querySelector('.close-btn');
@@ -2180,6 +2557,16 @@
 
             fabButton.addEventListener('click', function (event) {
                 event.preventDefault();
+                // Thêm hiệu ứng rung CSS
+                fabButton.classList.add('vibrate');
+                setTimeout(() => {
+                    fabButton.classList.remove('vibrate');
+                }, 300); // Thời gian rung khớp với animation (0.3s)
+
+                // Kích hoạt rung vật lý trên mobile nếu hỗ trợ
+                if ('vibrate' in navigator) {
+                    navigator.vibrate(50); // Rung 50ms (có thể điều chỉnh)
+                }
                 fabButton.classList.toggle('active');
                 fabContactBox.classList.toggle('active');
             });
@@ -2277,6 +2664,7 @@
                     }
                 });
             });
+
 
             document.querySelectorAll('.modal-close').forEach(btn => {
                 btn.addEventListener('click', () => {
