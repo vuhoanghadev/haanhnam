@@ -1128,7 +1128,7 @@
 
         .footer-certificates {
             display: flex;
-            justify-content: center;
+            /* justify-content: center; */
             gap: 20px;
             flex-wrap: wrap;
             align-items: center;
@@ -1148,6 +1148,7 @@
             transform: scale(1.1);
             opacity: 1;
         }
+
 
         /* Responsive Design */
         @media (max-width: 1024px) {
@@ -1782,8 +1783,8 @@
             background-color: #ffffff;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            /* padding: 15px; */
-            width: 300px;
+            padding: 15px;
+            width: 310px;
             opacity: 0;
             transform: translateY(10px);
             transition: opacity 0.3s ease, transform 0.3s ease;
@@ -1919,6 +1920,28 @@
 
         .fab-button i.fa-xmark {
             display: none;
+        }
+
+
+        /* Tùy chỉnh biểu tượng cho từng modal trong footer */
+        #modal-privacy .modal-content ul li i {
+            color: #9b59b6;
+            /* Màu tím cho bảo mật */
+        }
+
+        #modal-warranty .modal-content ul li i {
+            color: #2ecc71;
+            /* Màu xanh lá cho bảo hành */
+        }
+
+        #modal-terms .modal-content ul li i {
+            color: #e67e22;
+            /* Màu cam cho điều khoản */
+        }
+
+        #modal-shipping .modal-content ul li i {
+            color: #3498db;
+            /* Màu xanh dương cho vận chuyển */
         }
     </style>
 </head>
@@ -2451,19 +2474,23 @@
         </div>
         <div class="footer-column">
             <h3>Chính Sách & Điều Khoản</h3>
-            <a href="#privacy">Chính Sách Bảo Mật</a><br />
-            <a href="#warranty">Chính Sách Bảo Hành & Đổi Trả</a><br />
-            <a href="#terms">Điều Khoản Sử Dụng</a><br />
-            <a href="#shipping">Chính Sách Vận Chuyển</a>
+            <a href="#privacy" data-action="privacy">Chính Sách Bảo Mật</a><br />
+            <a href="#warranty" data-action="warranty">Chính Sách Bảo Hành & Đổi Trả</a><br />
+            <a href="#terms" data-action="terms">Điều Khoản Sử Dụng</a><br />
+            <a href="#shipping" data-action="shipping">Chính Sách Vận Chuyển</a>
         </div>
         <div class="footer-column">
             <h3>Kết Nối Với Chúng Tôi</h3>
             <div class="footer-social">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Zalo"><i class="fab fa-telegram"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://web.facebook.com/tunhuachatluong" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://web.facebook.com/tunhuachatluong" aria-label="Zalo"><i class="fab fa-telegram"></i></a>
+                <a href="https://web.facebook.com/tunhuachatluong" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://web.facebook.com/tunhuachatluong" aria-label="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://web.facebook.com/tunhuachatluong" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
             </div>
         </div>
         <div class="footer-column">
@@ -2491,21 +2518,111 @@
         <div class="footer-column">
             <h3>Chứng Chỉ & Đối Tác</h3>
             <div class="footer-certificates">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2qhMsvqXLzftUTqJW7zHXAQMAZFYrD0F0Ew&s"
-                    alt="ISO Certificate" />
-                <img src="https://stahomes.vn/wp-content/uploads/512x512.44eb9f72447691968ff87c6b83335502.ai_.1.png"
-                    alt="SSL Certificate" />
-                <img src="https://locnamviet.com/upload/news/son-jotun1594966571.png" alt="Partner 1" />
-                <img src="./image/logo-g9-paint.png" alt="Partner 2" />
+                <img src="./image/logo đối tác 1.png" alt="ISO Certificate" class="certificate-img" />
+                <img src="./image/logo đối tác 2.png" alt="SSL Certificate" class="certificate-img" />
+                <img src="./image/logo đối tác 3.png" alt="Partner 1" class="certificate-img" />
+                <img src="./image/logo đối tác 4.png" alt="Partner 2" class="certificate-img" />
             </div>
         </div>
 
     </footer>
     <p
         style="text-align: center; padding: 20px 0; margin: 0 auto; color: whitesmoke; font-size: 14px; background-color: #34495e; max-width: 1200px;">
-        ©
-        2025 Hà Anh Nam. Bảo lưu
-        mọi quyền bởi Vũ Hoàng Hà. Điều khoản sử dụng | Chính sách bảo mật</p>
+        © 2025 Hà Anh Nam. Bảo lưu mọi quyền. Được thành lập bởi Vũ Hoàng Hà. <a href="#terms" data-action="terms"
+            style="color: whitesmoke; text-decoration: none;">Điều khoản
+            sử dụng</a> |
+        <a href="#privacy" data-action="privacy" style="color: whitesmoke; text-decoration: none;"> Chính sách
+            bảo mật</a>
+    </p>
+
+    <!-- Modal for Privacy Policy -->
+    <div class="modal" id="modal-privacy">
+        <div class="modal-header">
+            <h2>Chính Sách Bảo Mật</h2>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-content">
+            <h3>Thông Tin Chung</h3>
+            <p>Chúng tôi, Công Ty TNHH Tư Vấn, Xây Dựng - Hà Anh Nam, cam kết bảo vệ thông tin cá nhân của khách hàng
+                theo đúng quy định pháp luật Việt Nam.</p>
+            <ul>
+                <li><i class="fas fa-lock"></i> Thu thập thông tin: Chỉ thu thập dữ liệu cần thiết (họ tên, số điện
+                    thoại, email) để phục vụ tư vấn và thi công.</li>
+                <li><i class="fas fa-lock"></i> Bảo mật: Thông tin được mã hóa và lưu trữ an toàn, không chia sẻ với bên
+                    thứ ba trừ khi có sự đồng ý của bạn.</li>
+                <li><i class="fas fa-lock"></i> Quyền lợi: Bạn có quyền yêu cầu xem, chỉnh sửa hoặc xóa thông tin cá
+                    nhân bất cứ lúc nào.</li>
+            </ul>
+            <h3>Liên Hệ</h3>
+            <p>Nếu có thắc mắc, vui lòng liên hệ qua email: <a href="mailto:haanhnam@gmail.com"
+                    style="color: #e67e22; text-decoration: none;">haanhnam@gmail.com</a> hoặc hotline: <strong>0989 912
+                    379</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Modal for Warranty Policy -->
+    <div class="modal" id="modal-warranty">
+        <div class="modal-header">
+            <h2>Chính Sách Bảo Hành & Đổi Trả</h2>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-content">
+            <h3>Cam Kết Bảo Hành</h3>
+            <p>Chúng tôi cung cấp chính sách bảo hành minh bạch và nhanh chóng:</p>
+            <ul>
+                <li><i class="fas fa-tools"></i> Thời gian bảo hành: 5 năm cho kết cấu công trình, 1-2 năm cho nội thất
+                    tùy gói dịch vụ.</li>
+                <li><i class="fas fa-tools"></i> Điều kiện: Bảo hành miễn phí cho lỗi kỹ thuật từ phía chúng tôi, không
+                    áp dụng cho hư hỏng do sử dụng sai mục đích.</li>
+                <li><i class="fas fa-tools"></i> Quy trình: Tiếp nhận yêu cầu qua hotline, xử lý trong 24-48 giờ.</li>
+            </ul>
+            <h3>Chính Sách Đổi Trả</h3>
+            <p>Hoàn tiền 100% nếu công trình không đạt chất lượng như cam kết trong hợp đồng.</p>
+        </div>
+    </div>
+
+    <!-- Modal for Terms of Use -->
+    <div class="modal" id="modal-terms">
+        <div class="modal-header">
+            <h2>Điều Khoản Sử Dụng</h2>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-content">
+            <h3>Quy Định Chung</h3>
+            <p>Việc sử dụng dịch vụ của Hà Anh Nam đồng nghĩa với việc bạn đồng ý với các điều khoản sau:</p>
+            <ul>
+                <li><i class="fas fa-file-alt"></i> Hợp đồng: Mọi giao dịch được thực hiện dựa trên hợp đồng rõ ràng,
+                    minh bạch.</li>
+                <li><i class="fas fa-file-alt"></i> Thanh toán: Đặt cọc 30% khi ký hợp đồng, thanh toán theo tiến độ
+                    công trình.</li>
+                <li><i class="fas fa-file-alt"></i> Trách nhiệm: Chúng tôi không chịu trách nhiệm cho chậm trễ do yếu tố
+                    khách quan (thiên tai, pháp lý từ phía khách hàng).</li>
+            </ul>
+            <h3>Cập Nhật</h3>
+            <p>Điều khoản có thể được cập nhật mà không cần thông báo trước. Vui lòng kiểm tra thường xuyên.</p>
+        </div>
+    </div>
+
+    <!-- Modal for Shipping Policy -->
+    <div class="modal" id="modal-shipping">
+        <div class="modal-header">
+            <h2>Chính Sách Vận Chuyển</h2>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-content">
+            <h3>Quy Trình Vận Chuyển</h3>
+            <p>Chúng tôi đảm bảo vận chuyển vật liệu xây dựng an toàn và đúng tiến độ:</p>
+            <ul>
+                <li><i class="fas fa-truck"></i> Phạm vi: Miễn phí vận chuyển trong bán kính 50km từ Hòa Bình.</li>
+                <li><i class="fas fa-truck"></i> Chi phí: Tính phí hợp lý cho các khu vực xa hơn, báo giá chi tiết trước
+                    khi thi công.</li>
+                <li><i class="fas fa-truck"></i> Cam kết: Vật liệu được giao đúng loại, đúng số lượng, không hư hỏng.
+                </li>
+            </ul>
+            <h3>Hỗ Trợ</h3>
+            <p>Liên hệ <strong>0989 912 379</strong> để được tư vấn chi tiết về vận chuyển cho dự án của bạn.</p>
+        </div>
+    </div>
 
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
