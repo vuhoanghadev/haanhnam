@@ -19,6 +19,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -38,13 +39,10 @@
         .back-to-top {
             position: fixed;
             bottom: 30px;
-            /* Cách đáy 30px để không sát quá */
             left: 30px;
-            /* Cách mép trái 30px để tránh che nội dung */
             width: 50px;
             height: 50px;
             background-color: #e67e22;
-            /* Đồng bộ với màu cam chủ đạo */
             color: white;
             border-radius: 50%;
             display: flex;
@@ -53,35 +51,28 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             cursor: pointer;
             opacity: 0;
-            /* Ẩn ban đầu */
             visibility: hidden;
             transition: opacity 0.3s ease, transform 0.3s ease;
             z-index: 999;
-            /* Đặt dưới FAB (z-index: 1000) */
         }
 
         .back-to-top.show {
             opacity: 0.7;
-            /* Mờ nhẹ khi hiển thị, tăng khi hover */
             visibility: visible;
         }
 
         .back-to-top:hover {
             opacity: 1;
-            /* Rõ hơn khi hover */
             background-color: #d35400;
-            /* Màu hover đậm hơn, đồng bộ FAB */
             transform: translateY(-5px);
-            /* Nâng nhẹ khi hover */
         }
 
         .back-to-top i {
             font-size: 20px;
         }
 
-        /* Pulse effect (tương tự FAB) */
         .back-to-top.show::after {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
@@ -107,71 +98,43 @@
         }
 
         header {
-            /* background: linear-gradient(90deg, #2c3e50 0%, #34495e 100%);
-            background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
-            background: linear-gradient(90deg, #181e25 0%, #334456 100%); */
             background: linear-gradient(90deg, #202225 0%, #334456 100%);
-            /* background: linear-gradient(90deg, #1d2127 0%, #334456 100%); */
             padding: clamp(15px, 3vw, 40px) clamp(20px, 5vw, 40px);
-            /* Padding linh hoạt theo kích thước màn hình */
             display: flex;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
-            /* Cho phép xuống dòng trên mobile */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-
-
         }
 
-        /* Kiểu dáng cho logo */
         header img {
             max-width: clamp(9.375em, 20vw, 10em);
-            /* Kích thước logo linh hoạt */
             transition: transform 0.3s ease;
             object-fit: contain;
-            /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            padding-right: 10px;
-            padding-left: 10px */
-            /* animation: fadeInDown 1s ease-in-out; */
-
         }
 
         header img:hover {
             transform: scale(1.1);
         }
 
-        /* Kiểu dáng cho header-info */
         .header-info {
             flex: 1;
             max-width: 70%;
             text-align: center;
             padding: clamp(5px, 2vw, 10px);
-            /* Padding linh hoạt */
         }
 
-        /* Kiểu dáng cho tiêu đề h2 trong header */
         .header-info h2 {
-            /* color: #e6e6e6; */
             color: #e67e22;
-            /* color: #ffeb3b; */
             font-size: clamp(1.5em, 3vw, 1.8em);
-            /* Kích thước chữ linh hoạt */
-            font-family: 'Montserrat', serif;
+            font-family: "Montserrat", serif;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             margin-bottom: 12px;
             transition: color 0.3s ease;
-            text-shadow:
-                4px 0 0 rgb(22, 22, 22),
-                0 1px 0 rgb(20, 20, 20),
-                -1px 0 0 rgb(15, 15, 15),
-                0 -1px 0 rgb(0, 0, 0);
+            text-shadow: 4px 0 0 rgb(22, 22, 22), 0 1px 0 rgb(20, 20, 20), -1px 0 0 rgb(15, 15, 15), 0 -1px 0 rgb(0, 0, 0);
             animation: slideInRight 0.5s ease-in-out 1s ease-in-out;
         }
 
@@ -179,49 +142,44 @@
             color: #d9d9d9;
         }
 
-        /* Kiểu dáng cho các đoạn p trong header */
         .header-info p:nth-child(2) {
-            /* "THƯƠNG HIỆU XÂY MỚI..." */
             color: #ecf0f1;
             font-size: clamp(0.9em, 2vw, 1.1em);
-            font-family: 'Montserrat', sans-serif;
+            font-family: "Montserrat", sans-serif;
             line-height: 1.5;
             margin-bottom: 8px;
         }
 
         .header-info p:nth-child(3) {
-            /* "Địa chỉ..." */
             color: #ecf0f1;
             font-size: clamp(0.85em, 1.8vw, 1em);
-            font-family: 'Montserrat', sans-serif;
+            font-family: "Montserrat", sans-serif;
             line-height: 1.5;
             margin-bottom: 8px;
         }
 
         .header-info p:nth-child(4) {
-            /* "(Tư vấn, thiết kế...)" */
             color: #ecf0f1;
             font-size: clamp(0.75em, 1.5vw, 0.9em);
-            font-family: 'Montserrat', sans-serif;
+            font-family: "Montserrat", sans-serif;
             font-style: italic;
             line-height: 1.5;
             margin-bottom: 8px;
         }
 
-        .header-info p:nth-child(5) {
-            /* "Hotline..." */
-            color: #e67e22;
-            font-size: clamp(1em, 2.5vw, 1.3em);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            line-height: 1.5;
-            text-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
+        .hotline-link {
+            color: #e67e22 !important;
+            text-decoration: none !important;
+            font-family: "Montserrat", sans-serif !important;
+            font-size: clamp(1em, 2.5vw, 1.3em) !important;
+            font-weight: 700 !important;
+            line-height: 1.5 !important;
+            text-shadow: 0 0 5px rgba(230, 126, 34, 0.5) !important;
             transition: color 0.3s ease;
-            animation: fadeInDown 1s ease-in-out;
         }
 
-        .header-info p:nth-child(5):hover {
-            color: #ff9800;
+        .hotline-link:hover {
+            color: #ff9800 !important;
         }
 
         nav {
@@ -229,6 +187,9 @@
             padding: 20px;
             text-align: center;
             position: relative;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .nav-links {
@@ -332,13 +293,13 @@
         }
 
         .nav-item .services-arrow::after {
-            content: '▼';
+            content: "▼";
             margin-left: 5px;
             font-size: 0.8em;
             vertical-align: baseline;
         }
 
-        /* Banner Styles with Slideshow */
+        /* Banner/Hero Section Styles */
         .banner {
             position: relative;
             height: 100vh;
@@ -350,19 +311,19 @@
             overflow: hidden;
         }
 
-        .banner-slideshow img.parallax {
+        .banner-video {
             position: absolute;
-            top: -10%;
-            /* Tăng chiều cao để có không gian di chuyển */
+            top: 0;
             left: 0;
             width: 100%;
-            height: 120%;
-            /* Tăng chiều cao để tạo hiệu ứng */
+            height: 100%;
+            z-index: 0;
+        }
+
+        .banner-video video {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            opacity: 0;
-            animation: slideshow 12s infinite;
-            transition: transform 0.1s ease-out;
-            /* Mượt mà khi cuộn */
         }
 
         .banner-slideshow {
@@ -372,6 +333,8 @@
             width: 100%;
             height: 100%;
             z-index: 0;
+            display: none;
+            /* Hidden by default, shown if video fails */
         }
 
         .banner-slideshow img {
@@ -383,6 +346,18 @@
             object-fit: cover;
             opacity: 0;
             animation: slideshow 12s infinite;
+        }
+
+        .banner-slideshow img.parallax {
+            position: absolute;
+            top: -10%;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            object-fit: cover;
+            opacity: 0;
+            animation: slideshow 12s infinite;
+            transition: transform 0.1s ease-out;
         }
 
         .banner-slideshow img:nth-child(1) {
@@ -425,54 +400,106 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+            /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)); */
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.0));
             z-index: 1;
         }
 
         .banner-content {
             position: relative;
             z-index: 2;
+            max-width: 1200px;
+            padding: 0 20px;
         }
 
         .banner h1 {
-            font-family: 'Montserrat', sans-serif;
+            font-family: "Montserrat", sans-serif;
             font-weight: 700;
             font-size: clamp(1.5em, 5vw, 3.5em);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             animation: fadeInDown 1s ease-in-out;
+            margin-bottom: 20px;
         }
 
         .banner .subtitle {
-            font-family: 'Montserrat', sans-serif;
+            font-family: "Montserrat", sans-serif;
             font-size: clamp(1em, 3vw, 1.5em);
-            margin: 15px 0;
+            margin: 15px 0 30px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
             animation: fadeInUp 1s ease-in-out 0.5s;
             animation-fill-mode: both;
         }
 
-        /* Gradient cho nút CTA ở trạng thái mặc định */
-        .banner .cta-button,
-        .about-text .cta-button {
-            background: linear-gradient(90deg, #e67e22 0%, #ff9800 100%);
-            /* Gradient từ cam đậm (#e67e22) đến cam sáng (#ff9800) */
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            padding: clamp(10px, 2vw, 15px) clamp(20px, 3vw, 30px);
-            /* Giữ nguyên padding linh hoạt */
-            font-size: clamp(1em, 2.5vw, 1.2em);
-            /* Giữ nguyên kích thước chữ */
-            transition: transform 0.3s ease;
-            /* Chỉ giữ transition cho transform */
-            display: inline-block;
+        .banner-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
         }
 
-        /* Hiệu ứng hover chỉ phóng to, không thay đổi gradient */
-        .banner .cta-button:hover,
-        .about-text .cta-button:hover {
+        .cta-button {
+            background: linear-gradient(90deg, #e67e22 0%, #ff9800 100%);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            padding: clamp(10px, 2vw, 15px) clamp(20px, 3vw, 30px);
+            font-size: clamp(1em, 2.5vw, 1.2em);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
             transform: scale(1.05);
-            /* Phóng to nhẹ khi hover */
+            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .cta-button.outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .cta-button.outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Stats Counter */
+        .stats-counter {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #e67e22;
+            margin-bottom: 5px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: white;
+            font-family: "Montserrat", sans-serif;
         }
 
         @keyframes fadeInDown {
@@ -499,16 +526,14 @@
             }
         }
 
+        /* About Us Section */
         .about-us {
-            padding: 40px;
+            padding: 60px 20px;
             background-color: #ecf0f1;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 30px;
-            border-radius: 10px;
-            margin: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .about-us h2 {
@@ -518,6 +543,18 @@
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 2px;
+            position: relative;
+        }
+
+        .about-us h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #e67e22;
         }
 
         .about-content {
@@ -528,18 +565,36 @@
             max-width: 1200px;
         }
 
-        .about-content img {
-            max-width: 100%;
+        /* Fix for About Us video positioning */
+        .about-media {
+            position: relative;
             height: 100%;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .about-media img {
+            width: 100%;
+            height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             object-fit: cover;
+            flex: 1;
         }
 
-        .about-content img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        .about-video {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border: 5px solid white;
+            flex: 1;
         }
 
         .about-text {
@@ -577,7 +632,7 @@
         }
 
         .about-text ul li:before {
-            content: '✓';
+            content: "✓";
             color: #e67e22;
             font-weight: bold;
             position: absolute;
@@ -585,23 +640,974 @@
             top: 2px;
         }
 
-        .about-text .cta-button {
-            display: inline-block;
-            padding: 12px 25px;
+        /* Mission, Vision, Values */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .mission-item {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mission-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-item i {
+            font-size: 2em;
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+
+        .mission-item h4 {
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .mission-item p {
+            font-size: 0.9em;
+            color: #34495e;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 60px 20px;
+            background-color: #f8f9fa;
+        }
+
+        .services h2 {
+            color: #e67e22;
+            font-size: 2.5em;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .services h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #e67e22;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Fix for service icons */
+        .service-icon {
+            background-color: #e67e22;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: relative;
+        }
+
+        .service-item h3 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 0 20px;
+        }
+
+        .service-item p {
+            color: #34495e;
+            font-size: 0.9em;
+            text-align: center;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .service-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .service-btn {
             background-color: #e67e22;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            padding: 10px 20px;
             text-align: center;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: block;
+            margin: 0 20px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
-        .about-text .cta-button:hover {
+        .service-btn:hover {
             background-color: #d35400;
-            transform: translateY(-2px);
         }
 
-        /* Fullscreen Modal Styles */
+        /* Projects Section */
+        .projects {
+            padding: 60px 20px;
+            background-color: #ecf0f1;
+        }
+
+        .projects h2 {
+            color: #e67e22;
+            font-size: 2.5em;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .projects h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #e67e22;
+        }
+
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            background-color: white;
+            color: #34495e;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: #e67e22;
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+        }
+
+        .project-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-item:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 20px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .project-item:hover .project-overlay {
+            transform: translateY(0);
+        }
+
+        .project-overlay h3 {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .project-overlay p {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .project-btn {
+            display: inline-block;
+            background-color: #e67e22;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.8em;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-btn:hover {
+            background-color: #d35400;
+        }
+
+        /* Before/After Slider */
+        .before-after-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .before-after-container h3 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Fix for the before/after slider */
+        .before-after-slider {
+            position: relative;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .before-image,
+        .after-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .after-image {
+            width: 50%;
+            overflow: hidden;
+        }
+
+        .before-image img,
+        .after-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background-color: white;
+            cursor: ew-resize;
+            z-index: 10;
+        }
+
+        .slider-handle::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .slider-handle::before {
+            content: "↔";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #e67e22;
+            font-size: 20px;
+            z-index: 11;
+        }
+
+        .slider-label {
+            position: absolute;
+            top: 20px;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 5px;
+            font-size: 0.8em;
+        }
+
+        .before-image .slider-label {
+            left: 20px;
+        }
+
+        .after-image .slider-label {
+            right: 20px;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 60px 20px;
+            background-color: #f8f9fa;
+        }
+
+        .benefits h2 {
+            color: #e67e22;
+            font-size: 2.5em;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .benefits h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #e67e22;
+        }
+
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #e67e22;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .benefit-icon i {
+            font-size: 35px;
+        }
+
+        .benefit-item h3 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .benefit-item p {
+            color: #34495e;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 60px 20px;
+            background-color: #ecf0f1;
+        }
+
+        .process h2 {
+            color: #e67e22;
+            font-size: 2.5em;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .process h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #e67e22;
+        }
+
+        .process-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-container::before {
+            content: "";
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background-color: #e0e0e0;
+            z-index: 0;
+        }
+
+        .process-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 250px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: #e67e22;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 5px 10px rgba(230, 126, 34, 0.3);
+        }
+
+        .process-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #e67e22;
+        }
+
+        .process-icon i {
+            font-size: 30px;
+        }
+
+        .process-item h3 {
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .process-item p {
+            color: #34495e;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        /* Customer Feedback Section */
+        .customer-feedback {
+            padding: 60px 20px;
+            background-color: #f8f8f8;
+        }
+
+        .customer-feedback h2 {
+            color: #e67e22;
+            font-size: 2.5em;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .customer-feedback h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #e67e22;
+        }
+
+        .feedback-carousel {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feedback-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .feedback-item {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feedback-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .feedback-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 5px solid #f8f8f8;
+        }
+
+        .feedback-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feedback-text {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #34495e;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .feedback-name {
+            font-weight: bold;
+            color: #e67e22;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .feedback-rating {
+            color: #f1c40f;
+            font-size: 1.2em;
+        }
+
+        /* Video Testimonials */
+        .video-testimonials {
+            margin-bottom: 50px;
+        }
+
+        .video-testimonials h3 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Google Rating */
+        .google-rating {
+            display: flex;
+            justify-content: center;
+        }
+
+        .rating-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .rating-stars {
+            color: #f1c40f;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .rating-score {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .rating-count {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .rating-platform {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #34495e;
+            font-weight: 500;
+        }
+
+        .rating-platform img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 60px 20px;
+            background-color: #f8f9fa;
+        }
+
+        .pricing h2 {
+            color: #e67e22;
+            font-size: 2.5em;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .pricing h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #e67e22;
+        }
+
+        .pricing-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+
+        .pricing-plan {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-plan.featured {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 2px solid #e67e22;
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #e67e22;
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            border-bottom-left-radius: 10px;
+        }
+
+        .plan-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .plan-header h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .plan-features {
+            padding: 30px;
+        }
+
+        .plan-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .plan-features li {
+            margin-bottom: 15px;
+            color: #34495e;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+        }
+
+        .plan-features li i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .plan-features li i.fa-check {
+            color: #2ecc71;
+        }
+
+        .plan-features li i.fa-times {
+            color: #e74c3c;
+        }
+
+        .plan-button {
+            display: block;
+            background-color: #e67e22;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            margin: 0 30px 30px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .plan-button:hover {
+            background-color: #d35400;
+        }
+
+        .pricing-compare {
+            text-align: center;
+        }
+
+        .compare-button {
+            display: inline-block;
+            background-color: transparent;
+            color: #e67e22;
+            border: 2px solid #e67e22;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .compare-button:hover {
+            background-color: #e67e22;
+            color: white;
+        }
+
+        /* Blog Section */
+        .blog {
+            padding: 60px 20px;
+            background-color: #ecf0f1;
+        }
+
+        .blog h2 {
+            color: #e67e22;
+            font-size: 2.5em;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .blog h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #e67e22;
+        }
+
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-post {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-10px);
+        }
+
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-post:hover .blog-image img {
+            transform: scale(1.1);
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-date {
+            color: #7f8c8d;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+
+        .blog-content h3 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .blog-content p {
+            color: #34495e;
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .blog-button {
+            display: inline-block;
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .blog-button:hover {
+            color: #d35400;
+        }
+
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -685,14 +1691,7 @@
             font-size: 1.1em;
         }
 
-        /* Xóa biểu tượng mặc định và thay bằng Font Awesome */
-        .modal-content ul li:before {
-            content: none;
-            /* Xóa mũi tên mặc định */
-        }
-
-        /* Thêm biểu tượng cụ thể cho từng modal */
-        #modal-services .modal-content ul li i {
+        .modal-content ul li i {
             position: absolute;
             left: 0;
             top: 2px;
@@ -700,197 +1699,26 @@
             font-size: 1em;
         }
 
-        #modal-build .modal-content ul li i {
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: #3498db;
-            /* Màu xanh để phân biệt */
-            font-size: 1em;
-        }
-
-        #modal-recruit .modal-content ul li i {
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: #2ecc71;
-            /* Màu xanh lá cho tuyển dụng */
-            font-size: 1em;
-        }
-
-        /* Thêm biểu tượng cho các modal còn lại */
-        #modal-repair-home .modal-content ul li i {
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: #e67e22;
-            /* Màu cam giống dịch vụ */
-            font-size: 1em;
-        }
-
-        #modal-repair-office .modal-content ul li i {
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: #3498db;
-            /* Màu xanh dương */
-            font-size: 1em;
-        }
-
-        #modal-projects .modal-content ul li i {
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: #f1c40f;
-            /* Màu vàng cho dự án nổi bật */
-            font-size: 1em;
-        }
-
-        /* Progress Bar Styles */
-        .project-list {
-            padding-left: 0;
-        }
-
-        .project-list li {
-            margin-bottom: 20px;
-            padding-left: 30px;
-            position: relative;
-        }
-
-        .project-list li:before {
-            content: '➤';
-            color: #e67e22;
-            position: absolute;
-            left: 0;
-            top: 2px;
-        }
-
-        .progress-container {
-            margin-top: 10px;
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .progress-label {
-            display: block;
-            font-size: 0.9em;
-            color: #34495e;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background-color: #ecf0f1;
-            border-radius: 5px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .progress-fill {
-            height: 100%;
-            background-color: #e67e22;
-            border-radius: 5px;
-            transition: width 1s ease-in-out;
-            /* Hiệu ứng chuyển động mượt */
-            position: relative;
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        #modal-consult .modal-content ul li i {
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: #2ecc71;
-            /* Màu xanh lá */
-            font-size: 1em;
-        }
-
-        #modal-news .modal-content ul li i {
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: #e74c3c;
-            /* Màu đỏ cho tin tức */
-            font-size: 1em;
-        }
-
-        #modal-contact .modal-content ul li i {
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: #9b59b6;
-            /* Màu tím cho liên hệ */
-            font-size: 1em;
-        }
-
-        .modal-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            margin: 20px 0;
-            transition: transform 0.3s ease;
-        }
-
-        .modal-content img:hover {
-            transform: scale(1.05);
-        }
-
-        .modal-content .gallery {
+        .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
 
-        @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
         }
 
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .gallery img:hover {
+            transform: scale(1.05);
         }
 
-        /* Success Modal Styles */
+        /* Success Modal */
         .success-modal {
             display: none;
             position: fixed;
@@ -948,16 +1776,232 @@
             background-color: #2980b9;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
+        /* FAB Container */
+        .fab-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .fab-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #e67e22;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .fab-button:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
+        }
+
+        .fab-button.vibrate {
+            animation: vibrate 0.3s ease;
+        }
+
+        @keyframes vibrate {
+            0% {
+                transform: translateX(0);
             }
 
-            to {
-                opacity: 1;
+            20% {
+                transform: translateX(-2px);
+            }
+
+            40% {
+                transform: translateX(2px);
+            }
+
+            60% {
+                transform: translateX(-2px);
+            }
+
+            80% {
+                transform: translateX(2px);
+            }
+
+            100% {
+                transform: translateX(0);
             }
         }
 
+        .fab-button i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            z-index: 1;
+        }
+
+        .fab-message {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            transform: translateX(50%);
+            background-color: #e67e22;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            pointer-events: none;
+            max-width: 250px;
+            text-align: center;
+            z-index: -1;
+        }
+
+        .fab-message::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 86%;
+            transform: translateX(-50%);
+            border-width: 10px;
+            border-style: solid;
+            border-color: #e67e22 transparent transparent transparent;
+        }
+
+        .fab-button.show-message .fab-message {
+            opacity: 1;
+            transform: translateX(0) translateY(-5px);
+        }
+
+        .pulse-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            z-index: 0;
+        }
+
+        .fab-contact-box {
+            position: absolute;
+            bottom: calc(100% + 20px);
+            right: 0;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 15px;
+            width: 310px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+            border: 1px solid #f0f0f0;
+            z-index: 1003;
+            font-family: "Montserrat", sans-serif;
+            color: #333;
+        }
+
+        .fab-contact-box.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .fab-contact-box::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: #ffffff transparent transparent transparent;
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.05));
+        }
+
+        .fab-contact-box .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #34495e;
+        }
+
+        .fab-contact-box .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #3498db;
+            position: relative;
+        }
+
+        .avatar-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .status-dot {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 14px;
+            height: 14px;
+            background-color: #03b603;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+            z-index: 100;
+        }
+
+        .fab-contact-box .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            text-decoration: none;
+            color: #34495e;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .fab-contact-box .social-link img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: contain;
+            margin-right: 2px;
+        }
+
+        .fab-contact-box .social-link:hover {
+            color: #e67e22;
+        }
+
+        .fab-button.active {
+            background-color: #d35400;
+        }
+
+        .fab-button.active i.fa-phone {
+            display: none;
+        }
+
+        .fab-button.active i.fa-xmark {
+            display: inline-block;
+        }
+
+        .fab-button i.fa-xmark {
+            display: none;
+        }
+
+        /* Footer */
         footer {
             background-color: #34495e;
             color: white;
@@ -969,78 +2013,6 @@
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-
-        /* Phần phản hồi của khách hàng */
-        .customer-feedback {
-            padding: 40px;
-            background-color: #f8f8f8;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-            border-radius: 10px;
-            margin: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .customer-feedback h2 {
-            color: #e67e22;
-            font-size: 2.5em;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .feedback-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        .feedback-item {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            display: flex;
-            gap: 20px;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .feedback-avatar img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .feedback-text {
-            font-size: 1em;
-            line-height: 1.6;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .feedback-name {
-            font-weight: bold;
-            color: #e67e22;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-
-        .feedback-rating {
-            color: #f1c40f;
-            font-size: 1.2em;
-        }
-
-        .feedback-rating i {
-            margin-right: 3px;
         }
 
         .footer-column {
@@ -1128,7 +2100,6 @@
 
         .footer-certificates {
             display: flex;
-            /* justify-content: center; */
             gap: 20px;
             flex-wrap: wrap;
             align-items: center;
@@ -1149,13 +2120,61 @@
             opacity: 1;
         }
 
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            margin: 0 auto;
+            color: whitesmoke;
+            font-size: 14px;
+            background-color: #34495e;
+            max-width: 1200px;
+        }
+
+        .copyright a {
+            color: whitesmoke;
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
             header {
                 flex-direction: column;
                 gap: 10px;
-                padding: 15px 20px;
             }
 
             header img {
@@ -1216,7 +2235,6 @@
         }
 
         @media (max-width: 768px) {
-
             header {
                 flex-direction: column;
                 gap: 15px;
@@ -1226,22 +2244,40 @@
                 max-width: 100%;
             }
 
-            .customer-feedback {
-                padding: 20px;
-                margin: 10px;
+            .banner-buttons {
+                flex-direction: column;
+                align-items: center;
             }
 
-            .customer-feedback h2 {
-                font-size: 2em;
-            }
-
-            .feedback-container {
+            .stats-counter {
+                flex-direction: column;
                 gap: 20px;
             }
 
-            .feedback-avatar img {
-                width: 80px;
-                height: 80px;
+            .stat-item {
+                width: 100%;
+            }
+
+            .services-container,
+            .projects-grid,
+            .benefits-container,
+            .process-container,
+            .feedback-container,
+            .pricing-container,
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+
+            .process-container::before {
+                display: none;
+            }
+
+            .process-item {
+                width: 100%;
+            }
+
+            .before-after-slider {
+                height: 300px;
             }
 
             footer {
@@ -1261,18 +2297,13 @@
 
             .footer-certificates {
                 justify-content: space-between;
-                /* Phân bố đều để kiểm soát số lượng trên hàng */
                 gap: 15px;
-                /* Giảm khoảng cách cho mobile */
             }
 
             .footer-certificates img {
                 max-width: 80px;
-                /* Giảm kích thước cho mobile */
                 flex: 0 0 calc(33.33% - 10px);
-                /* Đảm bảo 3 ảnh trên 1 hàng */
                 margin: 0;
-                /* Xóa margin mặc định nếu có */
             }
 
             .banner {
@@ -1301,6 +2332,35 @@
             }
         }
 
+        /* Fix for mobile responsiveness of the banner */
+        @media (max-width: 768px) {
+            .banner {
+                height: auto;
+                min-height: 60vh;
+            }
+
+            .banner-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .stats-counter {
+                flex-direction: column;
+                gap: 15px;
+                margin-bottom: 30px;
+            }
+
+            .stat-item {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .about-video {
+                height: 200px;
+            }
+        }
+
         @media (min-width: 769px) {
             .footer-column:nth-child(5) {
                 grid-row: 2;
@@ -1319,7 +2379,6 @@
         }
 
         @media (max-width: 480px) {
-
             .back-to-top {
                 width: 40px;
                 height: 40px;
@@ -1339,26 +2398,20 @@
                 max-width: clamp(140px, 25vw, 150px);
             }
 
-
             .header-info {
                 padding: 5px;
             }
 
             .header-info h2 {
                 font-size: 1.3em;
-                text-shadow:
-                    3px 0 0 rgb(22, 22, 22),
-                    0 1px 0 rgb(20, 20, 20),
-                    -1px 0 0 rgb(15, 15, 15),
-                    0 -1px 0 rgb(0, 0, 0);
+                text-shadow: 3px 0 0 rgb(22, 22, 22), 0 1px 0 rgb(20, 20, 20), -1px 0 0 rgb(15, 15, 15), 0 -1px 0 rgb(0, 0, 0);
             }
 
             .header-info p:last-child::before {
-                content: '📞 ';
+                content: "📞 ";
                 font-size: 1.2em;
                 vertical-align: middle;
                 color: #ff0000;
-                /* Thêm màu đỏ */
             }
 
             .header-info p:last-child {
@@ -1396,12 +2449,10 @@
                 background-color: #34495e;
                 width: 100%;
                 display: none;
-                /* Ẩn mặc định trên mobile */
             }
 
             .nav-item.active .nav-dropdown {
                 display: block;
-                /* Hiển thị khi nhấp vào trên mobile */
             }
 
             .close-btn {
@@ -1420,134 +2471,38 @@
                 height: 50vh;
             }
 
-            .about-us {
-                padding: 15px;
-                margin: 5px;
+            .banner h1 {
+                font-size: 1.8em;
             }
 
-            .about-us h2 {
-                font-size: 1.5em;
-            }
-
-            .about-content {
-                gap: 15px;
-            }
-
-            .about-content img {
-                max-height: 300px;
-            }
-
-            .about-text {
-                padding: 15px;
-            }
-
-            .about-text p,
-            .about-text ul {
-                font-size: 0.9em;
-            }
-
-
-            .customer-feedback h2 {
-                font-size: 1.5em;
-            }
-
-            .feedback-item {
-                padding: 15px;
-                gap: 10px;
-            }
-
-            .feedback-avatar img {
-                width: 75px;
-                height: 75px;
-            }
-
-            .feedback-text {
-                font-size: 0.9em;
-            }
-
-            .feedback-name {
-                font-size: 0.8em;
-            }
-
-            .feedback-rating {
+            .banner .subtitle {
                 font-size: 1em;
             }
 
-            footer {
-                padding: 15px;
-            }
-
-            .footer-column h3 {
-                font-size: 1em;
-            }
-
-            .footer-column p,
-            .footer-column a {
-                font-size: 0.8em;
-            }
-
-            .footer-social a {
-                font-size: 1.2em;
-            }
-
-            .footer-form input,
-            .footer-form button {
-                padding: 8px;
-                font-size: 0.8em;
-            }
-
-            .footer-certificates img {
-                max-width: 60px;
-                /* Giảm kích thước hơn nữa cho màn hình rất nhỏ */
-                flex: 0 0 calc(33.33% - 10px);
-                /* Vẫn giữ 3 ảnh trên 1 hàng */
-            }
-
-            .modal {
-                padding: 15px;
-            }
-
-            .modal-header h2 {
-                font-size: 1.5em;
-            }
-
-            .modal-content h3 {
-                font-size: 1.2em;
-            }
-
-            .modal-content p,
-            .modal-content ul li {
+            .cta-button {
                 font-size: 0.9em;
+                padding: 10px 20px;
             }
 
-            .success-modal {
-                padding: 20px;
+            .stat-item {
+                padding: 10px;
             }
 
-            .success-modal h3 {
-                font-size: 16px;
+            .stat-number {
+                font-size: 1.8em;
             }
 
-            .success-modal p {
-                font-size: 14px;
+            .stat-label {
+                font-size: 0.8em;
             }
 
-            .success-modal .icon {
-                font-size: 30px;
-            }
-
-            .success-modal .close-success {
-                padding: 8px 20px;
-                font-size: 14px;
-            }
-
-            nav {
-                position: sticky;
-                top: 0;
-                z-index: 1000;
-                /* Đảm bảo nav nằm trên các phần tử khác khi sticky */
-                background-color: #3498db;
-                /* Giữ màu nền khi sticky */
+            .about-video {
+                position: relative;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 200px;
+                margin-top: 20px;
             }
 
             .fab-container {
@@ -1572,24 +2527,114 @@
 
             .fab-contact-box {
                 width: 250px;
-                /* Giảm kích thước trên mobile */
                 padding: 10px;
             }
 
             .fab-contact-box .avatar {
-                width: 40px;
-                height: 40px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .fab-contact-box .social-link img {
+                width: 50px;
+                height: 50px;
             }
 
             .fab-contact-box .contact-info,
             .fab-contact-box .social-link {
                 font-size: 12px;
-                /* Kích thước chữ nhỏ hơn trên mobile */
             }
 
             .fab-contact-box .social-icon {
                 font-size: 18px;
-                /* Biểu tượng nhỏ hơn trên mobile */
+            }
+        }
+
+        /* Fix for project filters on mobile */
+        @media (max-width: 480px) {
+            .project-filters {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .filter-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .before-after-slider {
+                height: 250px;
+            }
+
+            .process-item {
+                padding: 20px 15px;
+            }
+
+            .pricing-plan {
+                width: 100%;
+            }
+
+            .pricing-plan.featured {
+                transform: scale(1);
+                margin: 20px 0;
+            }
+        }
+
+        /* Fix for footer on mobile */
+        @media (max-width: 768px) {
+            footer {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-column {
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+        }
+
+        /* Fix for benefits section on mobile */
+        @media (max-width: 480px) {
+            .benefit-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .benefit-icon i {
+                font-size: 25px;
+            }
+
+            .benefit-item {
+                padding: 20px 15px;
+            }
+
+            .footer-column {
+                text-align: left;
+            }
+
+            .footer-social {
+                justify-content: left;
+            }
+        }
+
+        /* Fix for blog section on mobile */
+        @media (max-width: 480px) {
+            .blog-image {
+                height: 150px;
+            }
+
+            .blog-content h3 {
+                font-size: 1.1em;
+            }
+        }
+
+        /* Fix for FAB container on mobile */
+        @media (max-width: 480px) {
+            .fab-container {
+                bottom: 70px;
             }
         }
 
@@ -1632,296 +2677,133 @@
             }
         }
 
-        /* Floating Action Button (FAB) Styles */
-        .fab-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        .fab-button {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #e67e22;
-            color: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            position: relative;
-            /* Đảm bảo làm tham chiếu cho các biểu tượng */
-        }
-
-        .fab-button:hover {
-            background-color: #d35400;
-            transform: translateY(-2px);
-        }
-
-        /* Thêm class khi nhấp để kích hoạt hiệu ứng rung */
-        .fab-button.vibrate {
-            animation: vibrate 0.3s ease;
-        }
-
-        /* Keyframes cho hiệu ứng rung nhẹ */
-        @keyframes vibrate {
-            0% {
-                transform: translateX(0);
+        /* Fix for banner on mobile devices */
+        @media (max-width: 480px) {
+            .banner {
+                height: auto;
+                min-height: 100vh;
+                padding: 80px 0 40px;
             }
 
-            20% {
-                transform: translateX(-2px);
+            .banner-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0 15px;
             }
 
-            40% {
-                transform: translateX(2px);
+            .banner h1 {
+                font-size: 1.5em;
+                text-align: center;
+                margin-bottom: 15px;
             }
 
-            60% {
-                transform: translateX(-2px);
+            .banner .subtitle {
+                font-size: 1em;
+                text-align: center;
+                margin-bottom: 25px;
             }
 
-            80% {
-                transform: translateX(2px);
+            .banner-buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                gap: 15px;
+                margin-bottom: 30px;
             }
 
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        .fab-button i {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-        }
-
-        /* Initial message */
-        .fab-message {
-            position: absolute;
-            bottom: 100%;
-            right: 0;
-            transform: translateX(50%);
-            background-color: #e67e22;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            pointer-events: none;
-            max-width: 250px;
-            text-align: center;
-            z-index: -1;
-        }
-
-        .fab-message::before {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 86%;
-            transform: translateX(-50%);
-            border-width: 10px;
-            border-style: solid;
-            border-color: #e67e22 transparent transparent transparent;
-        }
-
-        .fab-button.show-message .fab-message {
-            opacity: 1;
-            transform: translateX(0) translateY(-5px);
-        }
-
-        /* Pulse effect */
-        .pulse-effect {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-            z-index: 0;
-            /* Đặt dưới các biểu tượng */
-        }
-
-        .fab-button i {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            z-index: 1;
-            /* Đặt trên pulse-effect */
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0px rgba(230, 126, 34, 0.7);
+            .banner-buttons .cta-button {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+                padding: 12px 15px;
+                font-size: 0.9em;
             }
 
-            70% {
-                box-shadow: 0 0 0 15px rgba(230, 126, 34, 0);
+            .stats-counter {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
             }
 
-            100% {
-                box-shadow: 0 0 0 0px rgba(230, 126, 34, 0);
+            .stat-item {
+                padding: 10px 5px;
+                min-width: auto;
+                width: 100%;
+            }
+
+            .stat-number {
+                font-size: 1.5em;
+            }
+
+            .stat-label {
+                font-size: 0.7em;
             }
         }
 
-        /* Contact box */
-        .fab-contact-box {
-            position: absolute;
-            bottom: calc(100% + 20px);
-            right: 0;
-            background-color: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            padding: 15px;
-            width: 310px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            pointer-events: none;
-            border: 1px solid #f0f0f0;
-            z-index: 1003;
-            font-family: 'Montserrat', sans-serif;
-            color: #333;
+        /* Fix for About Us section on desktop */
+        @media (min-width: 769px) {
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+                align-items: stretch;
+            }
+
+            .about-media {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+            }
+
+            .about-media img {
+                height: 48%;
+                max-height: none;
+                object-fit: cover;
+            }
+
+            .about-video {
+                height: 48%;
+            }
+
+            .about-text {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
         }
 
-        .fab-contact-box.active {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
+        /* Additional fixes for banner on mobile */
+        @media (max-width: 480px) {
+
+            .banner-video video,
+            .banner-slideshow img {
+                object-position: center;
+            }
+
+            .banner-overlay {
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
+            }
         }
 
-        .fab-contact-box::before {
-            content: "";
-            position: absolute;
-            top: 100%;
-            right: 20px;
-            border-width: 10px;
-            border-style: solid;
-            border-color: #ffffff transparent transparent transparent;
-            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.05));
+        /* Fix for mobile view of About Us section */
+        @media (max-width: 768px) {
+            .about-media {
+                min-height: auto;
+                gap: 15px;
+            }
+
+            .about-media img {
+                height: 250px;
+            }
+
+            .about-video {
+                height: 200px;
+            }
         }
-
-        .fab-contact-box .contact-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-            font-size: 15px;
-            color: #34495e;
-        }
-
-        .fab-contact-box .avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            /* border: 2px solid #e67e22; */
-            border: 3px solid #3498db;
-
-            position: relative;
-            /* Để định vị chấm tròn */
-        }
-
-        /* Định dạng avatar và social icon */
-        .avatar-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Chấm xanh */
-        .status-dot {
-            position: absolute;
-            bottom: 2px;
-            /* Điều chỉnh vị trí chấm xanh */
-            right: 2px;
-            width: 14px;
-            height: 14px;
-            background-color: #03b603;
-            border-radius: 50%;
-            border: 2px solid #ffffff;
-            box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
-            z-index: 100;
-        }
-
-
-        .fab-contact-box .social-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-            text-decoration: none;
-            color: #34495e;
-            font-size: 15px;
-            transition: color 0.3s ease;
-        }
-
-        .fab-contact-box .social-link img {
-            width: 60px;
-            /* Kích thước bằng với avatar */
-            height: 60px;
-            border-radius: 50%;
-            /* Hình tròn */
-            object-fit: contain;
-            /* Đảm bảo hình ảnh không bị méo */
-            margin-right: 2px;
-            /* Khoảng cách với văn bản */
-        }
-
-        .fab-contact-box .social-link:hover {
-            color: #e67e22;
-        }
-
-        .fab-contact-box .social-icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50px;
-            /* Kích thước tương đương avatar */
-            height: 50px;
-            border-radius: 50%;
-            /* Nền tròn */
-            background-color: #e67e22;
-            /* Màu nền chủ đạo */
-            color: white;
-            /* Màu icon trắng */
-            font-size: 24px;
-            /* Kích thước icon phù hợp */
-            margin-right: 5px;
-            /* Khoảng cách với văn bản */
-        }
-
-        .fab-contact-box .social-link i {
-            margin-right: 0;
-            /* Xóa margin vì đã xử lý bằng flex và kích thước */
-        }
-
-        .fab-button.active {
-            background-color: #d35400;
-        }
-
-        .fab-button.active i.fa-phone {
-            display: none;
-        }
-
-        .fab-button.active i.fa-xmark {
-            display: inline-block;
-        }
-
-        .fab-button i.fa-xmark {
-            display: none;
-        }
-
 
         /* Tùy chỉnh biểu tượng cho từng modal trong footer */
         #modal-privacy .modal-content ul li i {
@@ -1943,6 +2825,35 @@
             color: #3498db;
             /* Màu xanh dương cho vận chuyển */
         }
+
+        .sound-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            /* Tăng lên để chắc chắn nằm trên tất cả */
+            transition: background-color 0.3s ease;
+            pointer-events: auto;
+            /* Đảm bảo nút nhận sự kiện */
+        }
+
+        .sound-btn:hover {
+            background-color: #d35400;
+        }
+
+        .sound-btn i {
+            font-size: 20px;
+        }
     </style>
 </head>
 
@@ -1951,6 +2862,7 @@
     <div class="back-to-top" id="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </div>
+
     <header>
         <img src="./image/logo6.png" alt="Hà Anh Nam Logo" />
         <div class="header-info">
@@ -1959,17 +2871,10 @@
             <p>Địa chỉ: Tân Thịnh, Yên Trị, Yên Thủy, Hòa Bình</p>
             <p>(Tư vấn, thiết kế, thi công xây mới, sửa chữa cải tạo nhà ở, văn phòng... trọn gói)</p>
             <p>
-                <a href="tel:0989912379" style="color: #e67e22 !important; 
-                          text-decoration: none !important; 
-                          font-family: 'Montserrat', sans-serif !important;
-                          font-size: clamp(0., 2.5vw, 1.3em) !important;
-                          font-weight: 700 !important;
-                          line-height: 1.5 !important;
-                          text-shadow: 0 0 5px rgba(230, 126, 34, 0.5) !important;">
+                <a href="tel:0989912379" class="hotline-link">
                     Hotline: 0989 912 379
                 </a>
             </p>
-
         </div>
     </header>
 
@@ -1997,29 +2902,94 @@
 
     <div class="overlay"></div>
 
-    <section class="banner">
-        <div class="banner-slideshow">
-            <img src="./image/banner1.webp" alt="Slide 1" class="parallax">
-            <img src="./image/banner2.jpg" alt="Slide 2" class="parallax">
-            <img src="./image/banner3.jpg" alt="Slide 3" class="parallax">
+    <!-- Hero Section - Improved -->
+    <section class="banner" id="home">
+        <div class="banner-video">
+            <video autoplay muted loop id="hero-video">
+                <source src="./image/Beautiful Interior Details - Luxury Home Tour - Trim.mp4" type="video/mp4">
+                <!-- Fallback to slideshow if video doesn't load -->
+            </video>
+            <div class="banner-slideshow">
+                <img src="./image/banner1.webp" alt="Slide 1" class="parallax">
+                <img src="./image/banner2.jpg" alt="Slide 2" class="parallax">
+                <img src="./image/banner3.jpg" alt="Slide 3" class="parallax">
+            </div>
+            <button id="toggle-sound-btn" class="sound-btn">
+                <i class="fas fa-volume-mute"></i>
+            </button>
+
         </div>
         <div class="banner-overlay"></div>
         <div class="banner-content">
             <h1>XÂY DỰNG TỪ TÂM - NÂNG TẦM ĐẲNG CẤP</h1>
             <p class="subtitle">Giải pháp xây dựng toàn diện cho ngôi nhà của bạn</p>
-            <a href="#contact" class="cta-button" data-action="contact">Liên hệ ngay</a>
+            <div class="banner-buttons">
+                <a href="#contact" class="cta-button primary" data-action="contact">Liên hệ ngay</a>
+                <a href="#pricing" class="cta-button secondary">Nhận báo giá miễn phí</a>
+                <a href="#projects" class="cta-button outline">Xem dự án thực tế</a>
+            </div>
+
+            <!-- Stats Counter -->
+            <div class="stats-counter">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="686">0</div>
+                    <div class="stat-label">Dự án hoàn thành</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="8">0</div>
+                    <div class="stat-label">Năm kinh nghiệm</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="468">0</div>
+                    <div class="stat-label">Khách hàng hài lòng</div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- About Us Section - Improved -->
     <section class="about-us" id="about">
         <h2>Về chúng tôi</h2>
         <div class="about-content">
-            <img src="./image/ảnh về chúng tôi.webp" alt="Hà Anh Nam Team" class="parallax" />
+            <div class="about-media">
+                <img src="./image/ảnh về chúng tôi.webp" alt="Hà Anh Nam Team" class="parallax" />
+                <div class="about-video">
+                    <!-- <iframe width="100%" height="100%" src="https://youtu.be/Xyl6ksx8woc?si=Sj46mCQ-u1HZEcTq"
+                        title="Giới thiệu Hà Anh Nam" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe> -->
+                    <iframe width="100%" height="100%"
+                        src="https://www.youtube.com/embed/Xyl6ksx8woc?si=AChf2agXP62O1zOH" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
             <div class="about-text">
                 <h3>CÔNG TY TNHH TƯ VẤN, XÂY DỰNG – HÀ ANH NAM</h3>
                 <p><strong>XÂY DỰNG TỪ TÂM - NÂNG TẦM ĐẲNG CẤP</strong></p>
                 <p>Với hơn 10 năm kinh nghiệm và hàng nghìn dự án tại Hà Nội, chúng tôi tự hào mang đến dịch vụ xây dựng
                     và sửa chữa nhà ở, văn phòng uy tín, chuyên nghiệp.</p>
+
+                <!-- Mission, Vision, Values -->
+                <div class="mission-vision">
+                    <div class="mission-item">
+                        <i class="fas fa-bullseye"></i>
+                        <h4>Sứ mệnh</h4>
+                        <p>Kiến tạo không gian sống hoàn hảo, nâng cao chất lượng cuộc sống cho mọi gia đình Việt</p>
+                    </div>
+                    <div class="mission-item">
+                        <i class="fas fa-eye"></i>
+                        <h4>Tầm nhìn</h4>
+                        <p>Trở thành đơn vị xây dựng hàng đầu tại miền Bắc, mang đến giải pháp xây dựng toàn diện</p>
+                    </div>
+                    <div class="mission-item">
+                        <i class="fas fa-gem"></i>
+                        <h4>Giá trị cốt lõi</h4>
+                        <p>Chất lượng - Uy tín - Tận tâm - Sáng tạo - Trách nhiệm</p>
+                    </div>
+                </div>
+
                 <h3>Cam kết của chúng tôi</h3>
                 <ul>
                     <li>Chữ tín, chữ tâm đặt lên hàng đầu</li>
@@ -2029,16 +2999,454 @@
                     <li>Phạt 50 triệu nếu phát hiện hàng giả, hàng nhái</li>
                     <li>Hoàn tiền nếu công trình kém chất lượng</li>
                 </ul>
-                <h3>Lợi ích khi chọn Hà Anh Nam</h3>
-                <ul>
-                    <li>Hỗ trợ xin cấp phép xây dựng</li>
-                    <li>Tiết kiệm 20% chi phí xây dựng</li>
-                    <li>Giám sát công trình 24/24</li>
-                    <li>Hỗ trợ lựa chọn vật liệu hoàn thiện tốt nhất</li>
-                    <li>Chủ nhà yên tâm giao phó, tập trung vào công việc cá nhân</li>
-                </ul>
                 <p><strong>HÀ ANH NAM - XÂY GIÁ TRỊ THẬT</strong></p>
                 <a href="#contact" class="cta-button" data-action="contact">Liên hệ ngay</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section - Improved -->
+    <section class="services" id="services">
+        <h2>Dịch Vụ Chính</h2>
+        <div class="services-container">
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3>Thiết kế kiến trúc</h3>
+                <p>Thiết kế kiến trúc hiện đại, phù hợp với nhu cầu và phong cách của khách hàng</p>
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    alt="Thiết kế kiến trúc">
+                <a href="#" class="service-btn">Xem chi tiết</a>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3>Xây nhà trọn gói</h3>
+                <p>Dịch vụ xây dựng nhà ở trọn gói từ thiết kế đến hoàn thiện, bàn giao chìa khóa tận tay</p>
+                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    alt="Xây nhà trọn gói">
+                <a href="#" class="service-btn">Nhận tư vấn ngay</a>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <h3>Thi công nội thất</h3>
+                <p>Thiết kế và thi công nội thất theo phong cách hiện đại, tân cổ điển hoặc theo yêu cầu</p>
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    alt="Thi công nội thất">
+                <a href="#" class="service-btn">Xem chi tiết</a>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Sửa chữa nhà</h3>
+                <p>Dịch vụ sửa chữa, cải tạo nhà ở với chi phí hợp lý, chất lượng cao</p>
+                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    alt="Sửa chữa nhà">
+                <a href="#" class="service-btn">Nhận tư vấn ngay</a>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-house"></i>
+                </div>
+                <h3>Cải tạo văn phòng</h3>
+                <p>Thiết kế và thi công cải tạo văn phòng hiện đại, chuyên nghiệp</p>
+                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    alt="Cải tạo văn phòng">
+                <a href="#" class="service-btn">Xem chi tiết</a>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fas fa-house-user"></i>
+                </div>
+                <h3>Xây dựng biệt thự</h3>
+                <p>Thiết kế và thi công biệt thự cao cấp với kiến trúc độc đáo, sang trọng</p>
+                <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    alt="Xây dựng biệt thự">
+                <a href="#" class="service-btn">Nhận tư vấn ngay</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section - Improved -->
+    <section class="projects" id="projects">
+        <h2>Dự Án Tiêu Biểu</h2>
+        <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">Tất cả</button>
+            <button class="filter-btn" data-filter="nha-pho">Xây nhà phố</button>
+            <button class="filter-btn" data-filter="biet-thu">Xây biệt thự</button>
+            <button class="filter-btn" data-filter="noi-that">Thi công nội thất</button>
+            <button class="filter-btn" data-filter="van-phong">Sửa chữa văn phòng</button>
+        </div>
+        <div class="projects-grid">
+            <div class="project-item" data-category="biet-thu">
+                <div class="project-image">
+                    <img src="https://xaydunghuyhoang.vn/wp-content/uploads/2021/07/mau-biet-thu-3-tang-hien-dai-1.png"
+                        alt="Biệt thự 3 tầng">
+                    <div class="project-overlay">
+                        <h3>Biệt Thự 3 Tầng - Hòa Bình</h3>
+                        <p>Thiết kế hiện đại, diện tích 250m²</p>
+                        <a href="#" class="project-btn">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-item" data-category="nha-pho">
+                <div class="project-image">
+                    <img src="https://trenghe.vn/wp-content/uploads/2021/08/Nha-pho-4-tang-tan-co-dien-sieu-sang.jpg"
+                        alt="Nhà phố 4 tầng">
+                    <div class="project-overlay">
+                        <h3>Nhà Phố 4 Tầng - Hà Nội</h3>
+                        <p>Phong cách tân cổ điển, tiết kiệm 15% chi phí</p>
+                        <a href="#" class="project-btn">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-item" data-category="van-phong">
+                <div class="project-image">
+                    <img src="https://icadvietnam.vn/wp-content/uploads/2024/04/thiet-ke-van-phong-500m2-3-1.jpg"
+                        alt="Văn phòng 500m²">
+                    <div class="project-overlay">
+                        <h3>Văn Phòng 500m² - Hòa Bình</h3>
+                        <p>Cải tạo không gian làm việc hiện đại</p>
+                        <a href="#" class="project-btn">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-item" data-category="noi-that">
+                <div class="project-image">
+                    <img src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-01-05/15-mau-thiet-ke-noi-that-chung-cu-nho-tien-nghi-va-toi-uu-dien-tich-63b69207b8f8826f0f13fd38.webp"
+                        alt="Nội thất chung cư">
+                    <div class="project-overlay">
+                        <h3>Nội Thất Chung Cư - Hà Nội</h3>
+                        <p>Thiết kế hiện đại, tối ưu không gian</p>
+                        <a href="#" class="project-btn">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-item" data-category="biet-thu">
+                <div class="project-image">
+                    <img src="https://xaydungvincon.com/Content/Images/FileUpload/2021/7/sua-chua-van-phong-uy-tin-gia-re0.jpg"
+                        alt="Biệt thự sân vườn">
+                    <div class="project-overlay">
+                        <h3>Biệt Thự Sân Vườn - Ba Vì</h3>
+                        <p>Thiết kế xanh, hòa hợp với thiên nhiên</p>
+                        <a href="#" class="project-btn">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-item" data-category="nha-pho">
+                <div class="project-image">
+                    <img src="https://xaydungtinhanh.com/wp-content/uploads/2023/02/B%C3%A1o-gi%C3%A1-s%E1%BB%ADa-ch%E1%BB%AFa-v%C4%83n-ph%C3%B2ng_xaydungtinhanh-8-1140x560.jpg"
+                        alt="Nhà phố 3 tầng">
+                    <div class="project-overlay">
+                        <h3>Nhà Phố 3 Tầng - Hà Nội</h3>
+                        <p>Thiết kế hiện đại, tối ưu công năng</p>
+                        <a href="#" class="project-btn">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Before/After Slider -->
+        <div class="before-after-container">
+            <h3>Trước & Sau Cải Tạo</h3>
+            <div class="before-after-slider">
+                <div class="before-image">
+                    <img src="https://static-5.happynest.vn/storage/uploads/2023/01/sua-nha-tron-goi-2-1673433162.jpeg"
+                        alt="Trước cải tạo">
+                    <span class="slider-label">Trước</span>
+                </div>
+                <div class="slider-handle"></div>
+                <div class="after-image">
+                    <img src="https://qtvietnam.com.vn/wp-content/uploads/2022/01/sua-nha-ha-noi-2.png"
+                        alt="Sau cải tạo">
+                    <span class="slider-label">Sau</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section - New -->
+    <section class="benefits" id="benefits">
+        <h2>Lợi Ích Khi Chọn Hà Anh Nam</h2>
+        <div class="benefits-container">
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-piggy-bank"></i>
+                </div>
+                <h3>Tiết kiệm chi phí 20%</h3>
+                <p>Tối ưu hóa thiết kế và vật liệu giúp tiết kiệm chi phí xây dựng mà vẫn đảm bảo chất lượng</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Bảo hành dài hạn</h3>
+                <p>Cam kết bảo hành lên đến 5 năm cho kết cấu và 2 năm cho nội thất, hỗ trợ 24/7</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <h3>Cam kết hoàn tiền</h3>
+                <p>Hoàn tiền 100% nếu phát hiện vật liệu giả, kém chất lượng hoặc không đúng cam kết</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <h3>Hỗ trợ pháp lý</h3>
+                <p>Hỗ trợ xin phép xây dựng, hoàn thiện hồ sơ pháp lý và các thủ tục liên quan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section - New -->
+    <section class="process" id="process">
+        <h2>Quy Trình Thi Công Chuyên Nghiệp</h2>
+        <div class="process-container">
+            <div class="process-item">
+                <div class="process-number">1</div>
+                <div class="process-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Tư vấn & Báo giá</h3>
+                <p>Khảo sát hiện trạng, tư vấn giải pháp và báo giá chi tiết, minh bạch</p>
+            </div>
+            <div class="process-item">
+                <div class="process-number">2</div>
+                <div class="process-icon">
+                    <i class="fas fa-drafting-compass"></i>
+                </div>
+                <h3>Thiết kế bản vẽ</h3>
+                <p>Thiết kế phương án tối ưu, phù hợp với nhu cầu và ngân sách của khách hàng</p>
+            </div>
+            <div class="process-item">
+                <div class="process-number">3</div>
+                <div class="process-icon">
+                    <i class="fas fa-hard-hat"></i>
+                </div>
+                <h3>Thi công & Giám sát</h3>
+                <p>Thi công đúng tiến độ, chất lượng với đội ngũ giám sát chuyên nghiệp 24/7</p>
+            </div>
+            <div class="process-item">
+                <div class="process-number">4</div>
+                <div class="process-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <h3>Bàn giao & Bảo hành</h3>
+                <p>Nghiệm thu, bàn giao công trình và cam kết bảo hành dài hạn</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Feedback Section - Improved -->
+    <section class="customer-feedback" id="feedback">
+        <h2>Phản Hồi Của Khách Hàng</h2>
+        <div class="feedback-carousel">
+            <div class="feedback-container">
+                <div class="feedback-item">
+                    <div class="feedback-avatar">
+                        <img src="https://pepsilan.com/wp-content/uploads/2022/12/full-bo-anh-dan-ong-trung-nien-viet-nam-dep-nhat-vn-34.jpg"
+                            alt="Avatar Khách hàng 1">
+                    </div>
+                    <div class="feedback-content">
+                        <p class="feedback-text">"Tôi rất hài lòng với dịch vụ xây nhà trọn gói của Hà Anh Nam. Đội ngũ
+                            thi
+                            công chuyên nghiệp, chất lượng công trình tốt, vượt ngoài mong đợi."</p>
+                        <p class="feedback-name">Nguyễn Trọng Tấn - Khách hàng</p>
+                        <div class="feedback-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="feedback-item">
+                    <div class="feedback-avatar">
+                        <img src="https://vnn-imgs-f.vgcloud.vn/2021/01/17/16/-14.jpg" alt="Avatar Khách hàng 2">
+                    </div>
+                    <div class="feedback-content">
+                        <p class="feedback-text">"Dịch vụ sửa nhà của Hà Anh Nam thật tuyệt vời. Mọi thứ được thực hiện
+                            nhanh chóng, sạch sẽ và tư vấn lắp đặt thiết bị thông minh với giá cả hợp lý. Tôi sẽ giới
+                            thiệu
+                            cho bạn bè."</p>
+                        <p class="feedback-name">Trần Thị Thu Hà - Khách hàng</p>
+                        <div class="feedback-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="feedback-item">
+                    <div class="feedback-avatar">
+                        <img src="https://pepsilan.com/wp-content/uploads/2022/12/full-bo-anh-dan-ong-trung-nien-viet-nam-dep-nhat-vn-42.jpg"
+                            alt="Avatar Khách hàng 3">
+                    </div>
+                    <div class="feedback-content">
+                        <p class="feedback-text">"Tôi đã sử dụng dịch vụ tư vấn thiết kế và rất ưng ý. Các kiến trúc sư
+                            của
+                            Hà Anh Nam rất sáng tạo và tận tâm. Những dự án tương lai chắc chắn vẫn lựa chọn Hà Anh Nam"
+                        </p>
+                        <p class="feedback-name">Nguyễn Thạc Văn - Khách hàng</p>
+                        <div class="feedback-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Testimonials -->
+            <div class="video-testimonials">
+                <h3>Video Đánh Giá</h3>
+                <div class="video-container">
+                    <iframe width="100%" height="100%"
+                        src="https://www.youtube.com/embed/yduJcr9wNCs?si=eReTCllpjyozrZsH" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Google Rating -->
+            <div class="google-rating">
+                <div class="rating-box">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="rating-score">4.8</div>
+                    <div class="rating-count">Dựa trên 68 đánh giá</div>
+                    <div class="rating-platform">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Google_Maps_icon_%282015-2020%29.svg/2048px-Google_Maps_icon_%282015-2020%29.svg.png"
+                            alt="Google Logo">
+                        Google Reviews
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section - New -->
+    <section class="pricing" id="pricing">
+        <h2>Bảng Giá Dịch Vụ</h2>
+        <div class="pricing-container">
+            <div class="pricing-plan">
+                <div class="plan-header">
+                    <h3>Gói Cơ Bản</h3>
+                    <div class="plan-price">5.5 triệu/m²</div>
+                </div>
+                <div class="plan-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Thiết kế kiến trúc cơ bản</li>
+                        <li><i class="fas fa-check"></i> Vật liệu tiêu chuẩn</li>
+                        <li><i class="fas fa-check"></i> Hoàn thiện trong 3-4 tháng</li>
+                        <li><i class="fas fa-check"></i> Bảo hành 2 năm</li>
+                        <li><i class="fas fa-times"></i> Thiết kế nội thất</li>
+                        <li><i class="fas fa-times"></i> Hệ thống nhà thông minh</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="plan-button">Liên hệ ngay</a>
+            </div>
+            <div class="pricing-plan featured">
+                <div class="plan-badge">Phổ biến</div>
+                <div class="plan-header">
+                    <h3>Gói Nâng Cao</h3>
+                    <div class="plan-price">7 triệu/m²</div>
+                </div>
+                <div class="plan-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Thiết kế kiến trúc chi tiết</li>
+                        <li><i class="fas fa-check"></i> Vật liệu cao cấp</li>
+                        <li><i class="fas fa-check"></i> Hoàn thiện trong 2-3 tháng</li>
+                        <li><i class="fas fa-check"></i> Bảo hành 3 năm</li>
+                        <li><i class="fas fa-check"></i> Thiết kế nội thất cơ bản</li>
+                        <li><i class="fas fa-times"></i> Hệ thống nhà thông minh</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="plan-button">Liên hệ ngay</a>
+            </div>
+            <div class="pricing-plan">
+                <div class="plan-header">
+                    <h3>Gói Cao Cấp</h3>
+                    <div class="plan-price">10 triệu/m²</div>
+                </div>
+                <div class="plan-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Thiết kế kiến trúc độc quyền</li>
+                        <li><i class="fas fa-check"></i> Vật liệu nhập khẩu</li>
+                        <li><i class="fas fa-check"></i> Hoàn thiện trong 2 tháng</li>
+                        <li><i class="fas fa-check"></i> Bảo hành 5 năm</li>
+                        <li><i class="fas fa-check"></i> Thiết kế nội thất cao cấp</li>
+                        <li><i class="fas fa-check"></i> Hệ thống nhà thông minh</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="plan-button">Liên hệ ngay</a>
+            </div>
+        </div>
+        <div class="pricing-compare">
+            <a href="#" class="compare-button">So sánh chi tiết các gói</a>
+        </div>
+    </section>
+
+    <!-- Blog Section - New -->
+    <section class="blog" id="blog">
+        <h2>Blog Kiến Thức Xây Dựng</h2>
+        <div class="blog-container">
+            <div class="blog-post">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Xu hướng thiết kế nhà 2024">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">15 Tháng 3, 2024</div>
+                    <h3>Xu hướng thiết kế nhà 2024</h3>
+                    <p>Khám phá những xu hướng thiết kế nhà ở mới nhất năm 2024, từ không gian mở đến vật liệu bền
+                        vững...</p>
+                    <a href="#" class="blog-button">Đọc tiếp</a>
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Kinh nghiệm thi công nội thất">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">10 Tháng 3, 2024</div>
+                    <h3>Kinh nghiệm thi công nội thất</h3>
+                    <p>Những kinh nghiệm quý báu khi thi công nội thất giúp tiết kiệm chi phí và đảm bảo chất lượng...
+                    </p>
+                    <a href="#" class="blog-button">Đọc tiếp</a>
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Phong thủy trong xây dựng">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">5 Tháng 3, 2024</div>
+                    <h3>Phong thủy trong xây dựng</h3>
+                    <p>Áp dụng nguyên tắc phong thủy trong xây dựng nhà ở để mang lại may mắn, tài lộc cho gia chủ...
+                    </p>
+                    <a href="#" class="blog-button">Đọc tiếp</a>
+                </div>
             </div>
         </div>
     </section>
@@ -2074,6 +3482,7 @@
         </div>
     </div>
 
+    <!-- Other modals remain the same -->
     <div class="modal" id="modal-build">
         <div class="modal-header">
             <h2>Xây Nhà Chọn Gói</h2>
@@ -2299,7 +3708,8 @@
                     SketchUp, lương 12-15 triệu/tháng.</li>
             </ul>
             <h3>Cách Ứng Tuyển</h3>
-            <p>Gửi CV về email: <strong>haanhnam@gmail.com</strong>
+            <p>Gửi CV về email: <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                        data-cfemail="fa929b9b9492949b97ba9d979b9396d4999597">[email&#160;protected]</a></strong>
                 hoặc liên hệ hotline <strong>0989 912 379</strong>.</p>
             <div class="gallery">
                 <img src="https://kjob.vn/wp-content/uploads/2022/07/bi-quyet-tuyen-dung-cong-nhan-hieu-qua-nhat-kjob.vn_-1.jpg"
@@ -2321,7 +3731,8 @@
             <ul>
                 <li><i class="fas fa-phone"></i> <strong>Hotline</strong>: 0989 912 379 (24/7)</li>
                 <li><i class="fas fa-envelope"></i> <strong>Email</strong>: <a href=""
-                        style="text-decoration: none; color: #e67e22">haanhnam@gmail.com</a></li>
+                        style="text-decoration: none; color: #e67e22"><span class="__cf_email__"
+                            data-cfemail="157d74747b7d7b7478557278747c793b767a78">[email&#160;protected]</span></a></li>
                 <li><i class="fas fa-map-marker-alt"></i> <strong>Địa chỉ</strong>: Tân Thịnh, Yên Trị, Yên Thủy, Hòa
                     Bình</li>
                 <li><i class="fas fa-clock"></i> <strong>Thời gian làm việc</strong>: 08:00 - 18:00, Thứ 2 - Thứ 7</li>
@@ -2369,11 +3780,8 @@
                 <div class="contact-info">
                     <div class="avatar-container">
                         <img src="./image/mrhoangha.jpg" alt="Ms. Mai Anh" class="avatar">
-                        <!-- <img src="./image/mrhoangha2.jpg" alt="Ms. Mai Anh" class="avatar"> -->
                         <div class="status-dot"></div>
                     </div>
-                    <!-- <a href="tel:0989912379" style="color: #34495e; text-decoration: none;"> 097 277 4646 (Ms. Mai
-                        Anh)</a> -->
                     <a href="tel:0989912379" style="color: #34495e; text-decoration: none;"> 083 422 0174 (Mr. Hoàng
                         Hà)</a>
                 </div>
@@ -2392,76 +3800,15 @@
         </a>
     </div>
 
-
-
-    <!-- Phần phản hồi của khách hàng (thêm vào đây) -->
-    <section class="customer-feedback" id="feedback">
-        <h2>Phản Hồi Của Khách Hàng</h2>
-        <div class="feedback-container">
-            <div class="feedback-item">
-                <div class="feedback-avatar">
-                    <img src="https://pepsilan.com/wp-content/uploads/2022/12/full-bo-anh-dan-ong-trung-nien-viet-nam-dep-nhat-vn-34.jpg"
-                        alt="Avatar Khách hàng 1">
-                </div>
-                <div class="feedback-content">
-                    <p class="feedback-text">"Tôi rất hài lòng với dịch vụ xây nhà trọn gói của Hà Anh Nam. Đội ngũ thi
-                        công chuyên nghiệp, chất lượng công trình tốt, vượt ngoài mong đợi."</p>
-                    <p class="feedback-name">Nguyễn Trọng Tấn - Khách hàng</p>
-                    <div class="feedback-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="feedback-item">
-                <div class="feedback-avatar">
-                    <img src="https://vnn-imgs-f.vgcloud.vn/2021/01/17/16/-14.jpg" alt="Avatar Khách hàng 2">
-                </div>
-                <div class="feedback-content">
-                    <p class="feedback-text">"Dịch vụ sửa nhà của Hà Anh Nam thật tuyệt vời. Mọi thứ được thực hiện
-                        nhanh chóng, sạch sẽ và tư vấn lắp đặt thiết bị thông minh với giá cả hợp lý. Tôi sẽ giới thiệu
-                        cho bạn bè."</p>
-                    <p class="feedback-name">Trần Thị Thu Hà - Khách hàng</p>
-                    <div class="feedback-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="feedback-item">
-                <div class="feedback-avatar">
-                    <img src="https://pepsilan.com/wp-content/uploads/2022/12/full-bo-anh-dan-ong-trung-nien-viet-nam-dep-nhat-vn-42.jpg"
-                        alt="Avatar Khách hàng 3">
-                </div>
-                <div class="feedback-content">
-                    <p class="feedback-text">"Tôi đã sử dụng dịch vụ tư vấn thiết kế và rất ưng ý. Các kiến trúc sư của
-                        Hà Anh Nam rất sáng tạo và tận tâm. Những dự án tương lai chắc chắn vẫn lựa chọn Hà Anh Nam"</p>
-                    <p class="feedback-name">Nguyễn Thạc Văn - Khách hàng</p>
-                    <div class="feedback-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer - Improved -->
     <footer>
         <div class="footer-column">
             <h3>Thông Tin Công Ty</h3>
             <p>CÔNG TY TNHH TƯ VẤN, XÂY DỰNG - HÀ ANH NAM</p>
             <p>Địa chỉ: Tân Thịnh, Yên Trị, Yên Thủy, Hòa Bình</p>
             <p>📞 Hotline: 0989 912 379</p>
-            <p>📧 Email: haanhnam@gmail.com</p>
+            <p>📧 Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                    data-cfemail="452d24242b2d2b2428052228242c296b262a28">[email&#160;protected]</a></p>
             <p>Thời gian làm việc: 08:00 - 18:00, Thứ 2 - Thứ 7</p>
             <a href="https://g.co/kgs/uxSy3wq" style="color: #3498db">Xem tất cả chi nhánh</a>
         </div>
@@ -2515,7 +3862,6 @@
                     ký ngay</button>
             </form>
         </div>
-
         <div class="footer-column">
             <h3>Chứng Chỉ & Đối Tác</h3>
             <div class="footer-certificates">
@@ -2525,16 +3871,15 @@
                 <img src="./image/logo đối tác 4.png" alt="Partner 2" class="certificate-img" />
             </div>
         </div>
-
     </footer>
-    <p
-        style="text-align: center; padding: 20px 0; margin: 0 auto; color: whitesmoke; font-size: 14px; background-color: #34495e; max-width: 1200px;">
-        © 2025 Hà Anh Nam. Bảo lưu mọi quyền. Được thành lập bởi Vũ Hoàng Hà. <a href="#terms" data-action="terms"
-            style="color: whitesmoke; text-decoration: none;">Điều khoản
+
+    <p class="copyright">
+        © 2025 Hà Anh Nam. Bảo lưu mọi quyền. Được thành lập bởi Vũ Hoàng Hà. <a href="#terms" data-action="terms">Điều
+            khoản
             sử dụng</a> |
-        <a href="#privacy" data-action="privacy" style="color: whitesmoke; text-decoration: none;"> Chính sách
-            bảo mật</a>
+        <a href="#privacy" data-action="privacy"> Chính sách bảo mật</a>
     </p>
+
 
     <!-- Modal for Privacy Policy -->
     <div class="modal" id="modal-privacy">
@@ -2625,231 +3970,486 @@
         </div>
     </div>
 
-
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener("DOMContentLoaded", () => {
 
-            // Cấu hình ScrollReveal toàn cục
+            const video = document.getElementById("hero-video");
+            const toggleSoundBtn = document.getElementById("toggle-sound-btn");
+
+            if (video && toggleSoundBtn) {
+                toggleSoundBtn.addEventListener("click", () => {
+                    if (video.muted) {
+                        video.muted = false;
+                        toggleSoundBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                    } else {
+                        video.muted = true;
+                        toggleSoundBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                    }
+                });
+            }
+
+            // ScrollReveal Configuration
             ScrollReveal({
-                reset: false,          // Không lặp lại hiệu ứng khi cuộn qua lại
-                distance: '50px',      // Khoảng cách di chuyển của hiệu ứng
-                duration: 1000,        // Thời gian hiệu ứng (ms)
-                delay: 200,            // Độ trễ trước khi bắt đầu (ms)
-                origin: 'bottom'       // Hướng xuất hiện (từ dưới lên)
-            });
+                reset: false,
+                distance: "50px",
+                duration: 1000,
+                delay: 200,
+                origin: "bottom",
+            })
 
-            // Áp dụng hiệu ứng cho section About
-            ScrollReveal().reveal('.about-us', {
-                delay: 300,            // Độ trễ riêng cho About
+            // Apply effects to sections
+            ScrollReveal().reveal(".about-us", {
+                delay: 300,
                 interval: 200,
-                reset: true  // Độ trễ giữa các phần tử con (nếu có)
-            });
-            // Áp dụng hiệu ứng cho section Customer Feedback
-            ScrollReveal().reveal('.customer-feedback', {
-                delay: 300,            // Độ trễ riêng cho Feedback
+                reset: true,
+            })
+
+            ScrollReveal().reveal(".services", {
+                delay: 300,
                 interval: 200,
-                reset: true          // Độ trễ giữa các feedback-item
-            });
+                reset: true,
+            })
+
+            ScrollReveal().reveal(".projects", {
+                delay: 300,
+                interval: 200,
+                reset: true,
+            })
+
+            ScrollReveal().reveal(".benefits", {
+                delay: 300,
+                interval: 200,
+                reset: true,
+            })
+
+            ScrollReveal().reveal(".process", {
+                delay: 300,
+                interval: 200,
+                reset: true,
+            })
+
+            ScrollReveal().reveal(".customer-feedback", {
+                delay: 300,
+                interval: 200,
+                reset: true,
+            })
+
+            ScrollReveal().reveal(".pricing", {
+                delay: 300,
+                interval: 200,
+                reset: true,
+            })
+
+            ScrollReveal().reveal(".blog", {
+                delay: 300,
+                interval: 200,
+                reset: true,
+            })
+
+            // Reveal individual items with delay
+            ScrollReveal().reveal(".service-item", { interval: 200 })
+            ScrollReveal().reveal(".project-item", { interval: 200 })
+            ScrollReveal().reveal(".benefit-item", { interval: 200 })
+            ScrollReveal().reveal(".process-item", { interval: 200 })
+            ScrollReveal().reveal(".process-item", { interval: 200 })
+            ScrollReveal().reveal(".feedback-item", { interval: 300 })
+            ScrollReveal().reveal(".pricing-plan", { interval: 200 })
+            ScrollReveal().reveal(".blog-post", { interval: 200 })
 
 
-            // Nếu muốn từng feedback-item hiện lần lượt
-            ScrollReveal().reveal('.feedback-item', {
-                interval: 300          // Mỗi feedback-item cách nhau 300ms
-            });
 
-            const backToTopButton = document.getElementById('back-to-top');
+            // Back to Top Button
+            const backToTopButton = document.getElementById("back-to-top")
 
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) { // Hiển thị nút khi cuộn xuống quá 300px
-                    backToTopButton.classList.add('show');
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add("show")
                 } else {
-                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.remove("show")
                 }
-            });
+            })
 
-            backToTopButton.addEventListener('click', () => {
+            backToTopButton.addEventListener("click", () => {
                 window.scrollTo({
                     top: 0,
-                    behavior: 'smooth' // Cuộn mượt lên đầu trang
-                });
-            });
+                    behavior: "smooth",
+                })
+            })
 
-            const parallaxImages = document.querySelectorAll('.banner-slideshow img.parallax');
-            window.addEventListener('scroll', function () {
-                const scrollPosition = window.scrollY;
-                parallaxImages.forEach(img => {
-                    // Tốc độ di chuyển chậm hơn so với cuộn (0.3 là hệ số parallax)
-                    const offset = scrollPosition * 0.3;
-                    img.style.transform = `translateY(${offset}px)`;
-                });
-            });
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.querySelector('.nav-links');
-            const closeBtn = document.querySelector('.close-btn');
-            const overlay = document.querySelector('.overlay');
-            const servicesLink = document.querySelector('.services-arrow');
-            const navItem = document.querySelector('.nav-item');
-            // JavaScript for FAB
-            const fabButton = document.querySelector('.fab-button');
-            const fabContactBox = document.querySelector('.fab-contact-box');
+            // Parallax Effect for Banner Images
+            const parallaxImages = document.querySelectorAll(".banner-slideshow img.parallax")
+            window.addEventListener("scroll", () => {
+                const scrollPosition = window.scrollY
+                parallaxImages.forEach((img) => {
+                    const offset = scrollPosition * 0.3
+                    img.style.transform = `translateY(${offset}px)`
+                })
+            })
 
-            // Show the initial message
+            // Video Fallback
+            const heroVideo = document.getElementById("hero-video")
+            const bannerSlideshow = document.querySelector(".banner-slideshow")
+
+            if (heroVideo) {
+                heroVideo.addEventListener("error", () => {
+                    // If video fails to load, show slideshow instead
+                    bannerSlideshow.style.display = "block"
+                    heroVideo.style.display = "none"
+                })
+            }
+
+            // Navigation and Mobile Menu
+            const hamburger = document.querySelector(".hamburger")
+            const navLinks = document.querySelector(".nav-links")
+            const closeBtn = document.querySelector(".close-btn")
+            const overlay = document.querySelector(".overlay")
+            const servicesLink = document.querySelector(".services-arrow")
+            const navItem = document.querySelector(".nav-item")
+
+            // FAB Button
+            const fabButton = document.querySelector(".fab-button")
+            const fabContactBox = document.querySelector(".fab-contact-box")
+
+            // Show initial message and hide after 5 seconds
             setTimeout(() => {
-                fabButton.classList.remove('show-message');
-            }, 5000);
+                fabButton.classList.add("show-message")
 
-            fabButton.addEventListener('click', function (event) {
-                event.preventDefault();
-                // Thêm hiệu ứng rung CSS
-                fabButton.classList.add('vibrate');
                 setTimeout(() => {
-                    fabButton.classList.remove('vibrate');
-                }, 300); // Thời gian rung khớp với animation (0.3s)
+                    fabButton.classList.remove("show-message")
+                }, 5000)
+            }, 2000)
 
-                // Kích hoạt rung vật lý trên mobile nếu hỗ trợ
-                if ('vibrate' in navigator) {
-                    navigator.vibrate(50); // Rung 50ms (có thể điều chỉnh)
+            fabButton.addEventListener("click", (event) => {
+                event.preventDefault()
+                // Add vibration effect
+                fabButton.classList.add("vibrate")
+                setTimeout(() => {
+                    fabButton.classList.remove("vibrate")
+                }, 300)
+
+                // Physical vibration on mobile if supported
+                if ("vibrate" in navigator) {
+                    navigator.vibrate(50)
                 }
-                fabButton.classList.toggle('active');
-                fabContactBox.classList.toggle('active');
-            });
+
+                fabButton.classList.toggle("active")
+                fabContactBox.classList.toggle("active")
+            })
 
             if (hamburger && navLinks && closeBtn && overlay && servicesLink && navItem) {
-                hamburger.addEventListener('click', () => {
-                    navLinks.classList.add('active');
-                    overlay.classList.add('active');
-                });
+                hamburger.addEventListener("click", () => {
+                    navLinks.classList.add("active")
+                    overlay.classList.add("active")
+                })
 
-                closeBtn.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    overlay.classList.remove('active');
-                    navItem.classList.remove('active');
-                });
+                closeBtn.addEventListener("click", () => {
+                    navLinks.classList.remove("active")
+                    overlay.classList.remove("active")
+                    navItem.classList.remove("active")
+                })
 
-                overlay.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    overlay.classList.remove('active');
-                    closeAllModals();
-                    navItem.classList.remove('active');
-                });
+                overlay.addEventListener("click", () => {
+                    navLinks.classList.remove("active")
+                    overlay.classList.remove("active")
+                    closeAllModals()
+                    navItem.classList.remove("active")
+                })
 
-                // Xử lý hover cho desktop (min-width: 481px)
-                document.querySelectorAll('.nav-item').forEach((item) => {
+                // Desktop hover handling
+                document.querySelectorAll(".nav-item").forEach((item) => {
                     if (window.innerWidth > 480) {
-                        item.addEventListener('mouseover', function () {
-                            this.querySelector('.nav-dropdown').style.display = 'block';
-                        });
-                        item.addEventListener('mouseout', function () {
-                            this.querySelector('.nav-dropdown').style.display = 'none';
-                        });
+                        item.addEventListener("mouseover", function () {
+                            this.querySelector(".nav-dropdown").style.display = "block"
+                        })
+                        item.addEventListener("mouseout", function () {
+                            this.querySelector(".nav-dropdown").style.display = "none"
+                        })
                     }
-                });
+                })
 
-                // Xử lý click vào "Dịch Vụ" trên mobile
-                servicesLink.addEventListener('click', function (e) {
+                // Mobile click handling for Services dropdown
+                servicesLink.addEventListener("click", (e) => {
                     if (window.innerWidth <= 480) {
-                        e.preventDefault();
-                        navItem.classList.toggle('active');
+                        e.preventDefault()
+                        navItem.classList.toggle("active")
                     }
-                });
+                })
             }
 
+            // Modal handling
             function closeAllModals() {
-                const modals = document.querySelectorAll('.modal');
-                const successModal = document.querySelector('#success-modal');
+                const modals = document.querySelectorAll(".modal")
+                const successModal = document.querySelector("#success-modal")
                 if (modals) {
-                    modals.forEach(modal => modal.classList.remove('active'));
+                    modals.forEach((modal) => modal.classList.remove("active"))
                 }
                 if (successModal) {
-                    successModal.classList.remove('active');
+                    successModal.classList.remove("active")
                 }
                 if (overlay) {
-                    overlay.classList.remove('active');
+                    overlay.classList.remove("active")
                 }
-                document.body.style.overflow = 'auto';
+                document.body.style.overflow = "auto"
             }
 
-            document.querySelectorAll('[data-action]').forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const action = this.getAttribute('data-action');
+            document.querySelectorAll("[data-action]").forEach((link) => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault()
+                    const action = this.getAttribute("data-action")
 
-                    if (window.innerWidth <= 480 && action === 'services') {
-                        return;
+                    if (window.innerWidth <= 480 && action === "services") {
+                        return
                     }
 
-                    closeAllModals();
+                    closeAllModals()
 
-                    if (action === 'home') {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else if (action === 'about') {
-                        const aboutSection = document.querySelector('#about');
+                    if (action === "home") {
+                        window.scrollTo({ top: 0, behavior: "smooth" })
+                    } else if (action === "about") {
+                        const aboutSection = document.querySelector("#about")
                         if (aboutSection) {
-                            aboutSection.scrollIntoView({ behavior: 'smooth' });
+                            aboutSection.scrollIntoView({ behavior: "smooth" })
+                        }
+                    } else if (action === "services") {
+                        const servicesSection = document.querySelector("#services")
+                        if (servicesSection) {
+                            servicesSection.scrollIntoView({ behavior: "smooth" })
+                        }
+                    } else if (action === "projects") {
+                        const projectsSection = document.querySelector("#projects")
+                        if (projectsSection) {
+                            projectsSection.scrollIntoView({ behavior: "smooth" })
+                        }
+                    } else if (action === "benefits") {
+                        const benefitsSection = document.querySelector("#benefits")
+                        if (benefitsSection) {
+                            benefitsSection.scrollIntoView({ behavior: "smooth" })
+                        }
+                    } else if (action === "process") {
+                        const processSection = document.querySelector("#process")
+                        if (processSection) {
+                            processSection.scrollIntoView({ behavior: "smooth" })
+                        }
+                    } else if (action === "feedback") {
+                        const feedbackSection = document.querySelector("#feedback")
+                        if (feedbackSection) {
+                            feedbackSection.scrollIntoView({ behavior: "smooth" })
+                        }
+                    } else if (action === "pricing") {
+                        const pricingSection = document.querySelector("#pricing")
+                        if (pricingSection) {
+                            pricingSection.scrollIntoView({ behavior: "smooth" })
+                        }
+                    } else if (action === "blog") {
+                        const blogSection = document.querySelector("#blog")
+                        if (blogSection) {
+                            blogSection.scrollIntoView({ behavior: "smooth" })
                         }
                     } else {
-                        const modalId = `modal-${action}`;
-                        const modal = document.querySelector(`#${modalId}`);
+                        const modalId = `modal-${action}`
+                        const modal = document.querySelector(`#${modalId}`)
                         if (modal) {
-                            modal.classList.add('active');
+                            modal.classList.add("active")
                             if (overlay) {
-                                overlay.classList.add('active');
+                                overlay.classList.add("active")
                             }
-                            document.body.style.overflow = 'hidden';
+                            document.body.style.overflow = "hidden"
                         }
                     }
 
                     if (window.innerWidth <= 480) {
                         if (navLinks && navItem) {
-                            navLinks.classList.remove('active');
-                            navItem.classList.remove('active');
+                            navLinks.classList.remove("active")
+                            navItem.classList.remove("active")
                         }
                     }
-                });
-            });
+                })
+            })
 
+            // Close modals with X button
+            document.querySelectorAll(".modal-close").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    closeAllModals()
+                })
+            })
 
-            document.querySelectorAll('.modal-close').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    closeAllModals();
-                });
-            });
-
-            const footerForm = document.querySelector('.footer-form form');
+            // Form submissions
+            const footerForm = document.querySelector(".footer-form")
             if (footerForm) {
-                footerForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    alert('Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ sớm nhất.');
-                });
+                footerForm.addEventListener("submit", (e) => {
+                    e.preventDefault()
+                    alert("Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ sớm nhất.")
+                })
             }
 
-            const contactForm = document.querySelector('#modal-contact form');
+            const contactForm = document.querySelector("#modal-contact form")
             if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    closeAllModals();
-                    const successModal = document.querySelector('#success-modal');
+                contactForm.addEventListener("submit", (e) => {
+                    e.preventDefault()
+                    closeAllModals()
+                    const successModal = document.querySelector("#success-modal")
                     if (successModal && overlay) {
-                        successModal.classList.add('active');
-                        overlay.classList.add('active');
-                        document.body.style.overflow = 'hidden';
+                        successModal.classList.add("active")
+                        overlay.classList.add("active")
+                        document.body.style.overflow = "hidden"
                     }
-                });
+                })
             }
 
-            const closeSuccessBtn = document.querySelector('.close-success');
+            const closeSuccessBtn = document.querySelector(".close-success")
             if (closeSuccessBtn) {
-                closeSuccessBtn.addEventListener('click', () => {
-                    const successModal = document.querySelector('#success-modal');
+                closeSuccessBtn.addEventListener("click", () => {
+                    const successModal = document.querySelector("#success-modal")
                     if (successModal && overlay) {
-                        successModal.classList.remove('active');
-                        overlay.classList.remove('active');
-                        document.body.style.overflow = 'auto';
+                        successModal.classList.remove("active")
+                        overlay.classList.remove("active")
+                        document.body.style.overflow = "auto"
                     }
-                });
+                })
             }
-        });
+
+            // Project Filters
+            const filterButtons = document.querySelectorAll(".filter-btn")
+            const projectItems = document.querySelectorAll(".project-item")
+
+            filterButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach((btn) => btn.classList.remove("active"))
+
+                    // Add active class to clicked button
+                    button.classList.add("active")
+
+                    // Get filter value
+                    const filterValue = button.getAttribute("data-filter")
+
+                    // Filter projects
+                    projectItems.forEach((item) => {
+                        if (filterValue === "all" || item.getAttribute("data-category") === filterValue) {
+                            item.style.display = "block"
+                        } else {
+                            item.style.display = "none"
+                        }
+                    })
+                })
+            })
+
+            // Before/After Slider
+            const sliderHandle = document.querySelector(".slider-handle")
+            const afterImage = document.querySelector(".after-image")
+
+            if (sliderHandle && afterImage) {
+                let isDragging = false
+
+                sliderHandle.addEventListener("mousedown", () => {
+                    isDragging = true
+                })
+
+                document.addEventListener("mouseup", () => {
+                    isDragging = false
+                })
+
+                document.addEventListener("mousemove", (e) => {
+                    if (!isDragging) return
+
+                    const sliderRect = sliderHandle.parentElement.getBoundingClientRect()
+                    const position = (e.clientX - sliderRect.left) / sliderRect.width
+
+                    // Limit position between 0 and 1
+                    const limitedPosition = Math.max(0, Math.min(1, position))
+
+                    // Update slider position
+                    sliderHandle.style.left = `${limitedPosition * 100}%`
+                    afterImage.style.width = `${limitedPosition * 100}%`
+                })
+
+                // Touch events for mobile
+                sliderHandle.addEventListener("touchstart", (e) => {
+                    isDragging = true
+                })
+
+                document.addEventListener("touchend", () => {
+                    isDragging = false
+                })
+
+                document.addEventListener("touchmove", (e) => {
+                    if (!isDragging) return
+
+                    const touch = e.touches[0]
+                    const sliderRect = sliderHandle.parentElement.getBoundingClientRect()
+                    const position = (touch.clientX - sliderRect.left) / sliderRect.width
+
+                    // Limit position between 0 and 1
+                    const limitedPosition = Math.max(0, Math.min(1, position))
+
+                    // Update slider position
+                    sliderHandle.style.left = `${limitedPosition * 100}%`
+                    afterImage.style.width = `${limitedPosition * 100}%`
+                })
+            }
+
+            // Stats Counter Animation
+            const statNumbers = document.querySelectorAll(".stat-number")
+
+            function animateCounter(element) {
+                const target = Number.parseInt(element.getAttribute("data-count"))
+                const duration = 5000 // 2 seconds
+                const step = target / (duration / 16) // 60fps
+                let current = 0
+
+                const timer = setInterval(() => {
+                    current += step
+                    if (current >= target) {
+                        clearInterval(timer)
+                        element.textContent = target
+                    } else {
+                        element.textContent = Math.floor(current)
+                    }
+                }, 16)
+            }
+
+            // Intersection Observer for stats counter
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            animateCounter(entry.target)
+                            observer.unobserve(entry.target)
+                        }
+                    })
+                },
+                { threshold: 0.5 },
+            )
+
+            statNumbers.forEach((stat) => {
+                observer.observe(stat)
+            })
+
+            // Fix for video loading in About Us section
+            const aboutVideo = document.querySelector(".about-video iframe")
+            if (aboutVideo) {
+                aboutVideo.addEventListener("load", () => {
+                    // Ensure proper sizing after load
+                    aboutVideo.style.width = "100%"
+                    aboutVideo.style.height = "100%"
+                })
+            }
+
+            // Fix for service icons to ensure they're fully visible
+            const serviceIcons = document.querySelectorAll(".service-icon")
+            serviceIcons.forEach((icon) => {
+                icon.style.visibility = "visible"
+            })
+
+            // Fix for before/after slider on mobile
+            const beforeAfterSlider = document.querySelector(".before-after-slider")
+            if (beforeAfterSlider && window.innerWidth <= 480) {
+                beforeAfterSlider.style.height = "250px"
+            }
+        })
+
+
     </script>
 </body>
 
