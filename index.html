@@ -2804,7 +2804,7 @@
             }
 
             .banner-overlay {
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0));
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.0));
                 /* Giảm độ tối */
             }
         }
@@ -2934,7 +2934,7 @@
     <!-- Hero Section - Improved -->
     <section class="banner" id="home">
         <div class="banner-video">
-            <video autoplay muted loop id="hero-video">
+            <video autoplay muted playsinline loop id="hero-video">
                 <source src="./image/Beautiful Interior Details - Luxury Home Tour - Trim.mp4" type="video/mp4">
                 <!-- Fallback to slideshow if video doesn't load -->
             </video>
@@ -4004,6 +4004,20 @@
         document.addEventListener("DOMContentLoaded", () => {
 
             const video = document.getElementById("hero-video");
+            const playButton = document.getElementById("play-video-btn");
+
+            if (video && playButton) {
+                video.addEventListener("canplay", () => {
+                    video.play().catch(() => {
+                        playButton.style.display = "block"; // Hiển thị nút nếu autoplay thất bại
+                    });
+                });
+
+                playButton.addEventListener("click", () => {
+                    video.play();
+                    playButton.style.display = "none"; // Ẩn nút sau khi phát
+                });
+            }
             const toggleSoundBtn = document.getElementById("toggle-sound-btn");
 
             if (video && toggleSoundBtn) {
@@ -4017,6 +4031,7 @@
                     }
                 });
             }
+
 
             // ScrollReveal Configuration
             ScrollReveal({
