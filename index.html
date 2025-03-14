@@ -403,6 +403,7 @@
             /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)); */
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.0));
             z-index: 1;
+            pointer-events: none
         }
 
         .banner-content {
@@ -2505,6 +2506,24 @@
                 margin-top: 20px;
             }
 
+            .sound-btn {
+                background-color: #ff8c00;
+                /* Màu cam sáng hơn cho mobile */
+                width: 45px;
+                /* Tăng kích thước một chút */
+                height: 45px;
+                bottom: 15px;
+                /* Giảm khoảng cách để tránh bị che */
+                right: 15px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+                /* Tăng bóng để nổi bật */
+            }
+
+            .sound-btn i {
+                font-size: 22px;
+                /* Tăng kích thước icon */
+            }
+
             .fab-container {
                 bottom: 10px;
                 right: 10px;
@@ -2785,7 +2804,8 @@
             }
 
             .banner-overlay {
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0));
+                /* Giảm độ tối */
             }
         }
 
@@ -2831,28 +2851,37 @@
             bottom: 20px;
             right: 20px;
             background-color: #e67e22;
+            /* Màu gốc */
             color: white;
             border: none;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             z-index: 20;
-            /* Tăng lên để chắc chắn nằm trên tất cả */
-            transition: background-color 0.3s ease;
+            /* Đảm bảo nằm trên tất cả các lớp */
+            transition: background-color 0.3s ease, transform 0.3s ease;
             pointer-events: auto;
-            /* Đảm bảo nút nhận sự kiện */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            /* Thêm bóng để nổi bật */
         }
 
         .sound-btn:hover {
             background-color: #d35400;
+            transform: scale(1.1);
+            /* Hiệu ứng phóng to khi hover */
+        }
+
+        .sound-btn:active {
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.8);
+            /* Hiệu ứng phát sáng khi nhấp */
         }
 
         .sound-btn i {
-            font-size: 20px;
+            font-size: 15px;
         }
     </style>
 </head>
