@@ -1669,6 +1669,10 @@
             color: #34495e;
             line-height: 1.8;
             animation: fadeInUp 0.7s ease-in-out;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .modal-content h3 {
@@ -2886,6 +2890,195 @@
         .sound-btn i {
             font-size: 15px;
         }
+
+
+        /* box nhận báo giá miễn phí */
+        .quote-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 30px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 50px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-button {
+            background: #ffffff;
+            border: 2px solid #e67e22;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            color: #e67e22;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: linear-gradient(90deg, #34495e 0%, #2c3e50 100%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+        }
+
+        .tab-button:hover::before,
+        .tab-button.active::before {
+            width: 200%;
+            height: 200%;
+        }
+
+        .tab-button:hover,
+        .tab-button.active {
+            color: #ffffff;
+            border-color: #34495e;
+            background: linear-gradient(90deg, #34495e 0%, #2c3e50 100%);
+            box-shadow: 0 5px 15px rgba(52, 73, 94, 0.3);
+        }
+
+        .tab-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            animation: fadeInUp 0.5s ease-in-out;
+        }
+
+        /* Ô nhập diện tích */
+        .tab-content label {
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            transition: color 0.3s ease;
+        }
+
+        .tab-content input[type="number"] {
+            width: 100%;
+            max-width: 350px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            color: #34495e;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .tab-content input[type="number"]:focus {
+            border-color: #e67e22;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(230, 126, 34, 0.2);
+            outline: none;
+        }
+
+        .tab-content>p:last-child {
+            font-size: 1em;
+            /* Tăng kích thước */
+            color: #e67e22;
+            /* Đổi sang cam nhạt */
+            text-align: center;
+            /* Canh giữa */
+            margin-top: 25px;
+            /* Tăng khoảng cách */
+            font-style: italic;
+            /* Chữ nghiêng */
+            opacity: 0.8;
+            /* Giảm độ đậm để không lấn át */
+        }
+
+        /* Bảng báo giá */
+        .quote-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        .quote-item {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #e67e22;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .quote-item h4 {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .quote-item h4::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #e67e22;
+            transition: width 0.3s ease;
+        }
+
+        .quote-item:hover h4::after {
+            width: 60px;
+        }
+
+        .quote-item p {
+            font-size: 0.95em;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .quote-item p strong {
+            color: #34495e;
+            font-weight: 600;
+        }
+
+        .quote-item p span {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+
+
+
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -2957,7 +3150,8 @@
             <p class="subtitle">Giải pháp xây dựng toàn diện cho ngôi nhà của bạn</p>
             <div class="banner-buttons">
                 <a href="#contact" class="cta-button primary" data-action="contact">Liên hệ ngay</a>
-                <a href="#pricing" class="cta-button secondary">Nhận báo giá miễn phí</a>
+                <!-- <a href="#pricing" class="cta-button secondary">Nhận báo giá miễn phí</a> -->
+                <a href="#quote" class="cta-button secondary" data-action="quote">Nhận Báo Giá Miễn Phí</a>
                 <a href="#projects" class="cta-button outline">Xem dự án thực tế</a>
             </div>
 
@@ -4001,37 +4195,237 @@
         </div>
     </div>
 
+    <div class="modal" id="modal-quote">
+        <div class="modal-header">
+            <h2>Nhận Báo Giá Miễn Phí</h2>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-content">
+            <h3>Tính Chi Phí Dự Án Của Bạn</h3>
+            <p>Chọn loại dịch vụ và nhập thông tin để nhận báo giá chi tiết:</p>
+
+            <!-- Tabs cho các dịch vụ -->
+            <div class="quote-tabs">
+                <button class="tab-button active" data-tab="build">Xây Nhà</button>
+                <button class="tab-button" data-tab="design">Thiết Kế Kiến Trúc</button>
+                <button class="tab-button" data-tab="interior">Thi Công Nội Thất</button>
+                <button class="tab-button" data-tab="repair-home">Sửa Chữa Nhà Cửa</button>
+                <button class="tab-button" data-tab="repair-office">Sửa Chữa Văn Phòng</button>
+            </div>
+
+            <!-- Nội dung các tab -->
+            <div class="tab-content" id="build">
+                <p>Nhập diện tích (m²) để tính chi phí xây nhà theo từng gói:</p>
+                <div style="margin-bottom: 20px;">
+                    <label for="build-area" style="font-weight: bold; color: #34495e;">Diện tích (m²):</label>
+                    <input type="number" id="build-area" placeholder="Nhập diện tích (ví dụ: 100)" min="1" required
+                        style="padding: 12px; width: 100%; max-width: 300px; border-radius: 5px; border: 1px solid #ccc; margin-top: 10px;">
+                </div>
+                <div class="quote-table" style="display: grid; gap: 20px;">
+                    <div class="quote-item">
+                        <h4>Gói Cơ Bản - 5.5 triệu/m²</h4>
+                        <p>Vật liệu tiêu chuẩn, thiết kế đơn giản, hoàn thiện trong 3-4 tháng.</p>
+                        <p><strong>Chi phí ước tính:</strong> <span id="build-basic-cost">0 VNĐ</span></p>
+                    </div>
+                    <div class="quote-item">
+                        <h4>Gói Nâng Cao - 7 triệu/m²</h4>
+                        <p>Vật liệu cao cấp, thiết kế hiện đại, tiết kiệm năng lượng.</p>
+                        <p><strong>Chi phí ước tính:</strong> <span id="build-advanced-cost">0 VNĐ</span></p>
+                    </div>
+                    <div class="quote-item">
+                        <h4>Gói Cao Cấp - 10 triệu/m²</h4>
+                        <p>Vật liệu nhập khẩu, thiết kế sang trọng, tối ưu không gian.</p>
+                        <p><strong>Chi phí ước tính:</strong> <span id="build-premium-cost">0 VNĐ</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="design" style="display: none;">
+                <p>Nhập diện tích (m²) để tính chi phí thiết kế kiến trúc:</p>
+                <div style="margin-bottom: 20px;">
+                    <label for="design-area" style="font-weight: bold; color: #34495e;">Diện tích (m²):</label>
+                    <input type="number" id="design-area" placeholder="Nhập diện tích (ví dụ: 100)" min="1" required
+                        style="padding: 12px; width: 100%; max-width: 300px; border-radius: 5px; border: 1px solid #ccc; margin-top: 10px;">
+                </div>
+                <div class="quote-table" style="display: grid; gap: 20px;">
+                    <div class="quote-item">
+                        <h4>Gói Cơ Bản - 150.000 VNĐ/m²</h4>
+                        <p>Bản vẽ 2D cơ bản, phối cảnh sơ bộ.</p>
+                        <p><strong>Chi phí ước tính:</strong> <span id="design-basic-cost">0 VNĐ</span></p>
+                    </div>
+                    <div class="quote-item">
+                        <h4>Gói Nâng Cao - 250.000 VNĐ/m²</h4>
+                        <p>Bản vẽ 3D chi tiết, tư vấn phong thủy.</p>
+                        <p><strong>Chi phí ước tính:</strong> <span id="design-advanced-cost">0 VNĐ</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="interior" style="display: none;">
+                <p>Nhập diện tích (m²) để tính chi phí thi công nội thất:</p>
+                <div style="margin-bottom: 20px;">
+                    <label for="interior-area" style="font-weight: bold; color: #34495e;">Diện tích (m²):</label>
+                    <input type="number" id="interior-area" placeholder="Nhập diện tích (ví dụ: 100)" min="1" required
+                        style="padding: 12px; width: 100%; max-width: 300px; border-radius: 5px; border: 1px solid #ccc; margin-top: 10px;">
+                </div>
+                <div class="quote-table" style="display: grid; gap: 20px;">
+                    <div class="quote-item">
+                        <h4>Gói Cơ Bản - 2 triệu/m²</h4>
+                        <p>Nội thất cơ bản, vật liệu phổ thông.</p>
+                        <p><strong>Chi phí ước tính:</strong> <span id="interior-basic-cost">0 VNĐ</span></p>
+                    </div>
+                    <div class="quote-item">
+                        <h4>Gói Cao Cấp - 4 triệu/m²</h4>
+                        <p>Nội thất cao cấp, thiết kế tùy chỉnh.</p>
+                        <p><strong>Chi phí ước tính:</strong> <span id="interior-premium-cost">0 VNĐ</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="repair-home" style="display: none;">
+                <p>Nhập diện tích (m²) để tính chi phí sửa chữa nhà cửa:</p>
+                <div style="margin-bottom: 20px;">
+                    <label for="repair-home-area" style="font-weight: bold; color: #34495e;">Diện tích (m²):</label>
+                    <input type="number" id="repair-home-area" placeholder="Nhập diện tích (ví dụ: 100)" min="1"
+                        required
+                        style="padding: 12px; width: 100%; max-width: 300px; border-radius: 5px; border: 1px solid #ccc; margin-top: 10px;">
+                </div>
+                <div class="quote-table" style="display: grid; gap: 20px;">
+                    <div class="quote-item">
+                        <h4>Gói Cơ Bản - 3 triệu/m²</h4>
+                        <p>Sửa chữa nhỏ, sơn lại, thay thế vật liệu cơ bản.</p>
+                        <p><strong>Chi phí ước tính:</strong> <span id="repair-home-basic-cost">0 VNĐ</span></p>
+                    </div>
+                    <div class="quote-item">
+                        <h4>Gói Toàn Diện - 5 triệu/m²</h4>
+                        <p>Cải tạo lớn, nâng cấp toàn bộ cấu trúc.</p>
+                        <p><strong>Chi phí ước tính:</strong> <span id="repair-home-advanced-cost">0 VNĐ</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="repair-office" style="display: none;">
+                <p>Nhập diện tích (m²) để tính chi phí sửa chữa văn phòng:</p>
+                <div style="margin-bottom: 20px;">
+                    <label for="repair-office-area" style="font-weight: bold; color: #34495e;">Diện tích (m²):</label>
+                    <input type="number" id="repair-office-area" placeholder="Nhập diện tích (ví dụ: 100)" min="1"
+                        required
+                        style="padding: 12px; width: 100%; max-width: 300px; border-radius: 5px; border: 1px solid #ccc; margin-top: 10px;">
+                </div>
+                <div class="quote-table" style="display: grid; gap: 20px;">
+                    <div class="quote-item">
+                        <h4>Gói Cơ Bản - 2.5 triệu/m²</h4>
+                        <p>Sửa chữa nhẹ, cải tạo không gian làm việc.</p>
+                        <p><strong>Chi phí ước tính:</strong> <span id="repair-office-basic-cost">0 VNĐ</span></p>
+                    </div>
+                    <div class="quote-item">
+                        <h4>Gói Chuyên Nghiệp - 4.5 triệu/m²</h4>
+                        <p>Nâng cấp toàn diện, lắp đặt hệ thống hiện đại.</p>
+                        <p><strong>Chi phí ước tính:</strong> <span id="repair-office-advanced-cost">0 VNĐ</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nút liên hệ tư vấn -->
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#contact" class="cta-button" data-action="contact" style="background-color: #e67e22;">Liên Hệ
+                    Tư Vấn Ngay</a>
+            </div>
+
+            <p style="font-size: 0.9em; color: #7f8c8d; margin-top: 20px;">*Lưu ý: Báo giá trên chỉ mang tính tham khảo.
+                Chi phí thực tế có thể thay đổi tùy theo yêu cầu cụ thể.</p>
+        </div>
+    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
-            const video = document.getElementById("hero-video");
-            const playButton = document.getElementById("play-video-btn");
+            const formatCurrency = (amount) => {
+                return amount.toLocaleString("vi-VN") + " VNĐ";
+            };
 
-            if (video && playButton) {
-                video.addEventListener("canplay", () => {
-                    video.play().catch(() => {
-                        playButton.style.display = "block"; // Hiển thị nút nếu autoplay thất bại
+            // Xây nhà
+            const buildArea = document.getElementById("build-area");
+            const buildBasicCost = document.getElementById("build-basic-cost");
+            const buildAdvancedCost = document.getElementById("build-advanced-cost");
+            const buildPremiumCost = document.getElementById("build-premium-cost");
+
+            if (buildArea) {
+                buildArea.addEventListener("input", () => {
+                    const area = parseFloat(buildArea.value) || 0;
+                    buildBasicCost.textContent = area > 0 ? formatCurrency(area * 5500000) : "0 VNĐ"; // 5.5 triệu/m²
+                    buildAdvancedCost.textContent = area > 0 ? formatCurrency(area * 7000000) : "0 VNĐ"; // 7 triệu/m²
+                    buildPremiumCost.textContent = area > 0 ? formatCurrency(area * 10000000) : "0 VNĐ"; // 10 triệu/m²
+                });
+            }
+
+            // Thiết kế kiến trúc
+            const designArea = document.getElementById("design-area");
+            const designBasicCost = document.getElementById("design-basic-cost");
+            const designAdvancedCost = document.getElementById("design-advanced-cost");
+
+            if (designArea) {
+                designArea.addEventListener("input", () => {
+                    const area = parseFloat(designArea.value) || 0;
+                    designBasicCost.textContent = area > 0 ? formatCurrency(area * 150000) : "0 VNĐ"; // 150 nghìn/m²
+                    designAdvancedCost.textContent = area > 0 ? formatCurrency(area * 250000) : "0 VNĐ"; // 250 nghìn/m²
+                });
+            }
+
+            // Thi công nội thất
+            const interiorArea = document.getElementById("interior-area");
+            const interiorBasicCost = document.getElementById("interior-basic-cost");
+            const interiorPremiumCost = document.getElementById("interior-premium-cost");
+
+            if (interiorArea) {
+                interiorArea.addEventListener("input", () => {
+                    const area = parseFloat(interiorArea.value) || 0;
+                    interiorBasicCost.textContent = area > 0 ? formatCurrency(area * 2000000) : "0 VNĐ"; // 2 triệu/m²
+                    interiorPremiumCost.textContent = area > 0 ? formatCurrency(area * 4000000) : "0 VNĐ"; // 4 triệu/m²
+                });
+            }
+
+            // Sửa chữa nhà cửa
+            const repairHomeArea = document.getElementById("repair-home-area");
+            const repairHomeBasicCost = document.getElementById("repair-home-basic-cost");
+            const repairHomeAdvancedCost = document.getElementById("repair-home-advanced-cost");
+
+            if (repairHomeArea) {
+                repairHomeArea.addEventListener("input", () => {
+                    const area = parseFloat(repairHomeArea.value) || 0;
+                    repairHomeBasicCost.textContent = area > 0 ? formatCurrency(area * 3000000) : "0 VNĐ"; // 3 triệu/m²
+                    repairHomeAdvancedCost.textContent = area > 0 ? formatCurrency(area * 5000000) : "0 VNĐ"; // 5 triệu/m²
+                });
+            }
+
+            // Sửa chữa văn phòng
+            const repairOfficeArea = document.getElementById("repair-office-area");
+            const repairOfficeBasicCost = document.getElementById("repair-office-basic-cost");
+            const repairOfficeAdvancedCost = document.getElementById("repair-office-advanced-cost");
+
+            if (repairOfficeArea) {
+                repairOfficeArea.addEventListener("input", () => {
+                    const area = parseFloat(repairOfficeArea.value) || 0;
+                    repairOfficeBasicCost.textContent = area > 0 ? formatCurrency(area * 2500000) : "0 VNĐ"; // 2.5 triệu/m²
+                    repairOfficeAdvancedCost.textContent = area > 0 ? formatCurrency(area * 4500000) : "0 VNĐ"; // 4.5 triệu/m²
+                });
+            }
+
+            // Xử lý tab switching
+            const tabButtons = document.querySelectorAll(".tab-button");
+            const tabContents = document.querySelectorAll(".tab-content");
+
+            tabButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    tabButtons.forEach((btn) => btn.classList.remove("active"));
+                    button.classList.add("active");
+
+                    const tabId = button.getAttribute("data-tab");
+                    tabContents.forEach((content) => {
+                        content.style.display = content.id === tabId ? "block" : "none";
                     });
                 });
-
-                playButton.addEventListener("click", () => {
-                    video.play();
-                    playButton.style.display = "none"; // Ẩn nút sau khi phát
-                });
-            }
-            const toggleSoundBtn = document.getElementById("toggle-sound-btn");
-
-            if (video && toggleSoundBtn) {
-                toggleSoundBtn.addEventListener("click", () => {
-                    if (video.muted) {
-                        video.muted = false;
-                        toggleSoundBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                    } else {
-                        video.muted = true;
-                        toggleSoundBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
-                    }
-                });
-            }
+            });
 
 
             // ScrollReveal Configuration
