@@ -1648,19 +1648,63 @@
         }
 
         .modal-close {
-            background: none;
+            background: linear-gradient(135deg, #e67e22, #ff9800);
+            /* Gradient cam nổi bật */
             border: none;
             font-size: 1.5em;
-            color: #34495e;
+            color: white;
             cursor: pointer;
-            transition: transform 0.3s ease, color 0.3s ease;
+            width: 2.5rem;
+            /* Sử dụng rem để đảm bảo tỷ lệ trên mọi màn hình */
+            height: 2.5rem;
+            /* Đảm bảo chiều rộng và cao bằng nhau */
+            border-radius: 50%;
+            /* Hình tròn */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             padding: 0;
-            line-height: 1;
+            /* Loại bỏ padding để tránh méo */
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            /* Đảm bảo tỷ lệ 1:1, giữ hình tròn */
         }
 
+        /* Hiệu ứng hover */
         .modal-close:hover {
-            color: #e67e22;
-            transform: rotate(90deg);
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #d35400, #e67e22);
+        }
+
+        /* Hiệu ứng ripple khi click */
+        .modal-close::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+
+        /* Keyframes cho hiệu ứng ripple */
+        @keyframes ripple {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+
+        /* Đảm bảo biểu tượng X được căn giữa */
+        .modal-close i {
+            font-size: 1.2em;
+            line-height: 1;
         }
 
         .modal-content {
@@ -2387,6 +2431,19 @@
         }
 
         @media (max-width: 480px) {
+
+            .modal-close {
+                /* width: 2rem; */
+                /* Giảm kích thước trên điện thoại */
+                height: 2rem;
+                font-size: 1.2em;
+                /* Điều chỉnh kích thước biểu tượng */
+            }
+
+            .modal-close i {
+                font-size: 1em;
+            }
+
             .back-to-top {
                 width: 40px;
                 height: 40px;
@@ -4341,6 +4398,37 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
+            // Lấy tham chiếu đến video và nút bật/tắt âm thanh
+            const video = document.getElementById("hero-video");
+            const toggleSoundBtn = document.getElementById("toggle-sound-btn");
+            const soundIcon = toggleSoundBtn.querySelector("i");
+
+            // Kiểm tra xem video và nút có tồn tại không
+            if (video && toggleSoundBtn) {
+                // Ban đầu video có thể bị mute, cập nhật icon cho phù hợp
+                if (video.muted) {
+                    soundIcon.classList.remove("fa-volume-up");
+                    soundIcon.classList.add("fa-volume-mute");
+                } else {
+                    soundIcon.classList.remove("fa-volume-mute");
+                    soundIcon.classList.add("fa-volume-up");
+                }
+
+                // Xử lý sự kiện click để bật/tắt âm thanh
+                toggleSoundBtn.addEventListener("click", () => {
+                    if (video.muted) {
+                        video.muted = false;
+                        soundIcon.classList.remove("fa-volume-mute");
+                        soundIcon.classList.add("fa-volume-up");
+                    } else {
+                        video.muted = true;
+                        soundIcon.classList.remove("fa-volume-up");
+                        soundIcon.classList.add("fa-volume-mute");
+                    }
+                });
+            }
+
+
             const formatCurrency = (amount) => {
                 return amount.toLocaleString("vi-VN") + " VNĐ";
             };
@@ -4427,6 +4515,16 @@
                     });
                 });
             });
+
+            function closeAllModals() {
+                const modals = document.querySelectorAll(".modal");
+                const successModal = document.querySelector("#success-modal");
+                modals.forEach((modal) => modal.classList.remove("active"));
+                if (successModal) successModal.classList.remove("active");
+                if (overlay) overlay.classList.remove("active");
+                document.body.style.overflow = "auto";
+                // Đảm bảo âm thanh luôn bật
+            }
 
 
             // ScrollReveal Configuration
