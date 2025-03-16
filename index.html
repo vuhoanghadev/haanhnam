@@ -1114,7 +1114,7 @@
         /* Benefits Section */
         .benefits {
             padding: 60px 20px;
-            background-color: #f8f9fa;
+            background-color: #e0e6e8;
         }
 
         .benefits h2 {
@@ -1170,6 +1170,9 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
+            background: linear-gradient(135deg, #e67e22, #ff9800);
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 10px rgba(230, 126, 34, 0.3);
         }
 
         .benefit-icon i {
@@ -1177,7 +1180,7 @@
         }
 
         .benefit-item h3 {
-            color: #2c3e50;
+            color: #555;
             font-size: 1.3em;
             margin-bottom: 15px;
         }
@@ -1255,7 +1258,7 @@
             transform: translateX(-50%);
             width: 40px;
             height: 40px;
-            background-color: #e67e22;
+            background-color: #3498db;
             color: white;
             border-radius: 50%;
             display: flex;
@@ -1263,13 +1266,13 @@
             justify-content: center;
             font-weight: bold;
             font-size: 1.2em;
-            box-shadow: 0 5px 10px rgba(230, 126, 34, 0.3);
+            box-shadow: 0 5px 10px rgba(0, 160, 253, 0.3);
         }
 
         .process-icon {
             width: 70px;
             height: 70px;
-            background-color: #f8f9fa;
+            background-color: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -2417,10 +2420,17 @@
 
             .process-container::before {
                 display: none;
+                background-color: #f39c12;
+                height: 4px;
+                border-radius: 2px;
+                background-image: linear-gradient(to right, #f39c12 50%, transparent 50%);
+                background-size: 20px 100%;
             }
 
             .process-item {
-                width: 100%;
+                min-width: 200px;
+                flex: 1;
+                max-width: 300px;
             }
 
             .before-after-slider {
