@@ -679,42 +679,115 @@
             color: #34495e;
         }
 
-        /* Services Section */
+        /* Kiểu chung cho section Services */
         .services {
-            padding: 60px 20px;
-            background-color: #f8f9fa;
+            padding: 80px 20px;
+            background-color: #f9fafb;
+            /* Màu nền xám nhạt nhẹ */
         }
 
+        /* Tiêu đề chính của section */
         .services h2 {
-            color: #e67e22;
-            font-size: 2.5em;
+            color: #1a202c;
+            /* Màu xám đậm */
+            font-size: 2.8em;
             text-align: center;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 50px;
+            letter-spacing: 1.5px;
+            margin-bottom: 60px;
             position: relative;
+            font-weight: 700;
         }
 
         .services h2::after {
             content: "";
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
+            width: 100px;
+            height: 4px;
             background-color: #e67e22;
+            border-radius: 2px;
         }
 
+        /* Container chứa các dịch vụ */
         .services-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+            max-width: 1280px;
             margin: 0 auto;
         }
 
-        /* Fix for service icons */
+        /* Mỗi mục dịch vụ */
+        .service-item {
+            background-color: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-item h3 {
+            color: #1a202c;
+            font-size: 1.6em;
+            text-align: center;
+            margin: 20px 0 10px;
+            padding: 0 20px;
+            font-weight: 600;
+        }
+
+        .service-item p {
+            color: #6b7280;
+            /* Màu xám trung */
+            font-size: 1em;
+            text-align: center;
+            padding: 0 25px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .service-item img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover img {
+            transform: scale(1.05);
+            /* Phóng to nhẹ khi hover */
+        }
+
+        .service-btn {
+            background-color: #e67e22;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            text-align: center;
+            display: block;
+            margin: 0 25px 25px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 500;
+            font-size: 1em;
+        }
+
+        .service-btn:hover {
+            background-color: #d35400;
+            transform: scale(1.05);
+        }
+
         .service-icon {
             background-color: #e67e22;
             color: white;
@@ -725,61 +798,75 @@
             align-items: center;
             justify-content: center;
             margin: 20px auto;
-            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
-            position: relative;
-            z-index: 2;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+            font-size: 1.8em;
+            transition: transform 0.3s ease;
         }
 
-        .service-item {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            padding-top: 20px;
-            position: relative;
+        .service-item:hover .service-icon {
+            transform: rotate(360deg);
+            /* Xoay biểu tượng khi hover */
         }
 
-        .service-item h3 {
-            color: #2c3e50;
-            font-size: 1.3em;
-            text-align: center;
-            margin-bottom: 15px;
-            padding: 0 20px;
-        }
+        /* Điều chỉnh cho accordion trên mobile */
+        @media (max-width: 480px) {
+            .services-container {
+                display: block;
+            }
 
-        .service-item p {
-            color: #34495e;
-            font-size: 0.9em;
-            text-align: center;
-            padding: 0 20px;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
+            .service-item {
+                margin-bottom: 20px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            }
 
-        .service-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
+            .service-item h3 {
+                padding: 20px;
+                cursor: pointer;
+                position: relative;
+                margin: 0;
+                font-size: 1.4em;
+                background-color: #fff;
+                border-bottom: 1px solid #e5e7eb;
+            }
 
-        .service-btn {
-            background-color: #e67e22;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            text-align: center;
-            display: block;
-            margin: 0 20px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+            .service-item h3::after {
+                content: "\f107";
+                font-family: "Font Awesome 6 Free";
+                font-weight: 900;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 1.2em;
+                color: #e67e22;
+                transition: transform 0.3s ease;
+            }
 
-        .service-btn:hover {
-            background-color: #d35400;
+            .service-item.active h3::after {
+                content: "\f106";
+                transform: translateY(-50%) rotate(180deg);
+            }
+
+            .service-content {
+                display: none;
+                padding: 20px;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .service-item.active .service-content {
+                display: block;
+                opacity: 1;
+            }
+
+            .service-item img {
+                height: 200px;
+            }
+
+            .service-btn {
+                padding: 10px 20px;
+                margin: 0 20px 20px;
+            }
         }
 
         /* Projects Section */
@@ -3293,64 +3380,64 @@
         <h2>Dịch Vụ Chính</h2>
         <div class="services-container">
             <div class="service-item">
-                <div class="service-icon">
-                    <i class="fas fa-home"></i>
-                </div>
                 <h3>Thiết kế kiến trúc</h3>
-                <p>Thiết kế kiến trúc hiện đại, phù hợp với nhu cầu và phong cách của khách hàng</p>
-                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    alt="Thiết kế kiến trúc">
-                <a href="#" class="service-btn">Xem chi tiết</a>
+                <div class="service-content">
+                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                    <p>Thiết kế kiến trúc hiện đại, phù hợp với nhu cầu và phong cách của khách hàng</p>
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Thiết kế kiến trúc">
+                    <a href="#" class="service-btn">Xem chi tiết</a>
+                </div>
             </div>
             <div class="service-item">
-                <div class="service-icon">
-                    <i class="fas fa-building"></i>
-                </div>
                 <h3>Xây nhà trọn gói</h3>
-                <p>Dịch vụ xây dựng nhà ở trọn gói từ thiết kế đến hoàn thiện, bàn giao chìa khóa tận tay</p>
-                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    alt="Xây nhà trọn gói">
-                <a href="#" class="service-btn">Nhận tư vấn ngay</a>
+                <div class="service-content">
+                    <div class="service-icon"><i class="fas fa-building"></i></div>
+                    <p>Dịch vụ xây dựng nhà ở trọn gói từ thiết kế đến hoàn thiện, bàn giao chìa khóa tận tay</p>
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Xây nhà trọn gói">
+                    <a href="#" class="service-btn">Xem chi tiết</a>
+                </div>
             </div>
             <div class="service-item">
-                <div class="service-icon">
-                    <i class="fas fa-couch"></i>
-                </div>
                 <h3>Thi công nội thất</h3>
-                <p>Thiết kế và thi công nội thất theo phong cách hiện đại, tân cổ điển hoặc theo yêu cầu</p>
-                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    alt="Thi công nội thất">
-                <a href="#" class="service-btn">Xem chi tiết</a>
+                <div class="service-content">
+                    <div class="service-icon"><i class="fas fa-couch"></i></div>
+                    <p>Thiết kế và thi công nội thất theo phong cách hiện đại, tân cổ điển hoặc theo yêu cầu</p>
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Thi công nội thất">
+                    <a href="#" class="service-btn">Xem chi tiết</a>
+                </div>
             </div>
             <div class="service-item">
-                <div class="service-icon">
-                    <i class="fas fa-tools"></i>
-                </div>
                 <h3>Sửa chữa nhà</h3>
-                <p>Dịch vụ sửa chữa, cải tạo nhà ở với chi phí hợp lý, chất lượng cao</p>
-                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    alt="Sửa chữa nhà">
-                <a href="#" class="service-btn">Nhận tư vấn ngay</a>
+                <div class="service-content">
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
+                    <p>Dịch vụ sửa chữa, cải tạo nhà ở với chi phí hợp lý, chất lượng cao</p>
+                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Sửa chữa nhà">
+                    <a href="#" class="service-btn">Xem chi tiết</a>
+                </div>
             </div>
             <div class="service-item">
-                <div class="service-icon">
-                    <i class="fas fa-laptop-house"></i>
-                </div>
                 <h3>Cải tạo văn phòng</h3>
-                <p>Thiết kế và thi công cải tạo văn phòng hiện đại, chuyên nghiệp</p>
-                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    alt="Cải tạo văn phòng">
-                <a href="#" class="service-btn">Xem chi tiết</a>
+                <div class="service-content">
+                    <div class="service-icon"><i class="fas fa-laptop-house"></i></div>
+                    <p>Thiết kế và thi công cải tạo văn phòng hiện đại, chuyên nghiệp</p>
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Cải tạo văn phòng">
+                    <a href="#" class="service-btn">Xem chi tiết</a>
+                </div>
             </div>
             <div class="service-item">
-                <div class="service-icon">
-                    <i class="fas fa-house-user"></i>
-                </div>
                 <h3>Xây dựng biệt thự</h3>
-                <p>Thiết kế và thi công biệt thự cao cấp với kiến trúc độc đáo, sang trọng</p>
-                <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    alt="Xây dựng biệt thự">
-                <a href="#" class="service-btn">Nhận tư vấn ngay</a>
+                <div class="service-content">
+                    <div class="service-icon"><i class="fas fa-house-user"></i></div>
+                    <p>Thiết kế và thi công biệt thự cao cấp với kiến trúc độc đáo, sang trọng</p>
+                    <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Xây dựng biệt thự">
+                    <a href="#" class="service-btn">Xem chi tiết</a>
+                </div>
             </div>
         </div>
     </section>
@@ -4397,6 +4484,13 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+
+            document.querySelectorAll('.service-item h3').forEach(header => {
+                header.addEventListener('click', () => {
+                    const item = header.parentElement;
+                    item.classList.toggle('active');
+                });
+            });
 
             // Lấy tham chiếu đến video và nút bật/tắt âm thanh
             const video = document.getElementById("hero-video");
